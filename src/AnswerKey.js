@@ -29,7 +29,7 @@ function AnswerKeyPage() {
             {selectedCategory} <FaChevronRight className="p-1 m-1" /> Answer Key
           </h1>
           </div>
-      <table className="w-full bg-white text-dark-blue border-gray-300 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-lg m-1">
+      <table className="w-full bg-white text-dark-blue border-gray-300 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-lg p-1">
         <thead>
           <tr><th className="py-2 px-4 text-sm sm:text-base border-b border-dark-blue font-semibold text-left" style={tableHeaderStyle}>Question No.</th>
             <th className="py-2 px-4 text-sm sm:text-base border-b border-dark-blue font-semibold text-left" style={tableHeaderStyle}>Question</th>
