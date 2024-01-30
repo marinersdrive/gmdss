@@ -29,11 +29,11 @@ function AnswerKeyPage() {
             {selectedCategory} <FaChevronRight className="p-1 m-1" /> Answer Key
           </h1>
           </div>
-      <table className="w-full bg-white text-dark-blue border-gray-300 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-lg mr-2">
+      <table className="w-full bg-white text-dark-blue border-gray-300 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-lg">
         <thead>
           <tr><th className="py-2 px-4 text-sm sm:text-base border-b border-dark-blue font-semibold text-left" style={tableHeaderStyle}>Question No.</th>
             <th className="py-2 px-4 text-sm sm:text-base border-b border-dark-blue font-semibold text-left" style={tableHeaderStyle}>Question</th>
-            <th className="py-2 px-4 text-sm sm:text-base border-b border-dark-blue font-semibold text-right" style={tableHeaderStyle}>Correct Answer</th>
+            <th className="py-2 px-4 text-sm sm:text-base border-b border-dark-blue font-semibold text-left" style={tableHeaderStyle}>Correct Answer</th>
           </tr>
         </thead>
         <tbody>
@@ -41,7 +41,7 @@ function AnswerKeyPage() {
             <tr key={index}>
                 <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-left" style={tableCellStyle}>{index+1}.</td>
               <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-left" style={tableCellStyle}>{question.question}</td>
-              <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-right" style={tableCellStyle}>{correctAnswers[index]}</td>
+              <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-left" style={tableCellStyle}>{correctAnswers[index]}</td>
             </tr>
           ))}
         </tbody>
