@@ -281,7 +281,7 @@ function PdfDetails() {
                 }
               }}
             >
-              <div className="bg-gray-300 h-20 flex items-center p-4">
+              <div className="bg-gray-300 sm:h-20 h-14 flex items-center p-4">
               <FontAwesomeIcon className="sm:h-8 sm:w-8 w-6 h-6" icon={faFilePdf} style={{ color: "#fa0f00" }} />
                 <div className="ml-4">
                   <p className="text-black font-montserrat font-semibold text-justify text-sm tracking-wide">

@@ -29,7 +29,7 @@ function HomePage() {
   const handleSubmit = async () => {
     setButtonText('Sending...');
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL2}api/send-message`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/send-message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
