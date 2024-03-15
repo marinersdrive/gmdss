@@ -1,4 +1,5 @@
 import React, { useEffect} from "react";
+import Logo from "./assets/bg2.png";
 import { useNavigate, Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 import { IoIosKey } from "react-icons/io";
@@ -13,7 +14,7 @@ function ResultPage() {
   const indosNumber = localStorage.getItem("indosNumber");
   const correctCount = localStorage.getItem("correctCount");
   const incorrectCount = localStorage.getItem("incorrectCount");
-  let selectedCategory = localStorage.getItem("selectedCategory");
+  let selectedCategory = localStorage.getItem("selectedCategory3");
   //let selectedCategory1 = localStorage.getItem("selectedCategory");
 
   useEffect(() => {
@@ -72,17 +73,22 @@ function ResultPage() {
         <div className="sm:text-center">
           <div className="flex space-x-2.5 items-center mb-4">
             <img
-              src="https://github.com/marinersdrive/images/blob/main/Main%20Logo.png?raw=true"
+              src={Logo}
               alt="Logo"
-              className="w-12 h-12 sm:w-14 sm:h-14 motion-safe:animate-spin"
+              className="w-14 h-14 sm:w-16 sm:h-16"
             />
-            <h1 className="flex text-lg sm:text-2xl font-bold text-dark-blue">
-              {selectedCategory} <FaChevronRight className="p-1 m-1 font-bold" /> Result
-            </h1>
+            <Link to="/testseriespage" className="flex text-white font-montserrat font-semibold text-sm lg:text-lg tracking-wider sm:mt-0 mt-2">
+              {selectedCategory} 
+            </Link>
+            <FaChevronRight className="text-white mt-2 sm:mt-0 p-1 sm:p-0" /> 
+            <h2 className="text-white font-montserrat font-semibold text-sm lg:text-lg sm:mt-0 mt-2 tracking-wider">
+            Result
+            </h2>
+           
           </div>
 
           <div className="flex justify-between items-center py-2">
-            <table className="w-full sm:w-4/5 bg-white text-dark-blue border-gray-300 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-lg">
+            <table className="w-full sm:w-4/5 bg-white text-blue-900 border-gray-300 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-lg">
               <tbody>
                 <tr>
                   <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-left">Student Name</td>
@@ -109,10 +115,10 @@ function ResultPage() {
           </div>
         </div>
 
-        <p className="text-dark-blue text-l sm:text-xl font-bold mt-3">Exam Summary:</p>
+        <p className="text-gray-300 font-montserrat text-l sm:text-xl font-semibold mt-3 tracking-wide">Exam Summary:</p>
 
         <div className="flex justify-between items-center">
-          <table className="w-full sm:w-4/5 mt-4 bg-white text-dark-blue border-gray-300 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-lg">
+          <table className="w-full sm:w-4/5 mt-4 bg-white text-blue-900 border-gray-300 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-lg">
             <tbody>
               <tr>
                 <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-left">Total Questions Appeared</td>
@@ -137,7 +143,8 @@ function ResultPage() {
         </div>
 
         <div className="text-center pt-12">
-          <p className="sm:w-4/5 text-xl sm:text-3xl text-dark-blue font-bold border-2 sm:border-4 border-blue p-2 mb-2 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
+          <p className="sm:w-4/5 text-xl sm:text-3xl text-gray-800 font-bold border-2 sm:border-4 border-slate-400 p-2 mb-2 
+          lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] tracking-wider">
             Exam Result:
           </p>
           {isPass ? (
@@ -148,18 +155,22 @@ function ResultPage() {
         </div>
 
         {/* Answer Key Link */}
-        <p className="sm:w-4/5 flex text-xs sm:text-base font-semibold text-dark-blue justify-center ml-1 mt-0.5">
-          <Link to="/answerkeypage" className="underline flex items-center hover:bg-gray-50 transition duration-300 ease-in-out transform hover:scale-105 relative">Answer Key <IoIosKey className="w-4 h-4 ml-1 mt-1" /></Link>
+        <p className="sm:w-4/5 flex text-xs sm:text-base font-semibold text-slate-400 justify-center ml-1 mt-0.5">
+          <Link to="/answerkeypage" className="border-b-2 flex items-center hover:bg-gray-50 transition duration-300 ease-in-out transform hover:scale-105 relative">
+            Answer Key </Link>
+        <IoIosKey className="w-4 h-4 ml-1 sm:mt-1.5 mt-1" />
         </p>
       </div>
 
     
     {/* Right side content */}
     <div className="w-full sm:w-1/2 sm:m-0 m-14">
+        
         <div className="sm:flex justify-center items-center h-full">
           <div style={{ width: '70%', position: 'relative' }}>
             {/* White circular component */}
-            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', borderRadius: '50%', backgroundColor: 'white', width: '70%', height: '70%', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: isPass ? '#4CAF50' : '#FF6347', border: '1px solid #f0f0f0', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }} className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', borderRadius: '50%', backgroundColor: 'white', width: '70%', height: '70%', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: isPass ? '#4CAF50' : '#FF6347', border: '1px solid #f0f0f0', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }} 
+            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
               {/* Percentage in bold */}
               {`${Math.round((correctCount / totalQuestions) * 100)}%`}
             </div>
@@ -175,21 +186,12 @@ function ResultPage() {
                 trailColor: isPass ? '#E5F3E590' : '#f0f0f0',
                 pathTransition: 'stroke-dashoffset 0.5s ease 0s',
                 pathTransitionDuration: 0.5,
-                pathShadow: 'rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px',
+                boxShadow: '0 20px 50px rgba(8, 112, 184, 0.7)'
               })}
             />
           </div>
         </div>
       </div>
-
-    
-     
-
-
-
-      
-
-
     </div>
   );
 }

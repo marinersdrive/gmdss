@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import "./InstructionsPage.css";
+import Logo from "./assets/bg2.png";
 import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
+import { FaChevronLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+
 
 function InstructionsPage() {
+
+document.body.classList.add('instructions-page');  
   const navigate = useNavigate();
-  const selectedCategory = "GMDSS";
+  const selectedCategory = localStorage.getItem("selectedCategory3");
+  let ct = localStorage.getItem("selectedCategory4");
+
+  if (selectedCategory === "Physics" || selectedCategory === "Chemistry" || selectedCategory === "Mathematics" || 
+  selectedCategory === "General English" || selectedCategory === "General Aptitude" || selectedCategory === "General Knowledge"
+  || selectedCategory === "PCM" || selectedCategory === "Final Mock"){
+    ct = "IMU-CET"
+  }
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -78,7 +91,7 @@ function InstructionsPage() {
       // Wait for 5 seconds
       await new Promise(resolve => setTimeout(resolve, 5000));
       // Navigate to the next page
-      navigate("/TestPage");
+      navigate("/testpage");
       } catch (error) {
         console.error('Error storing user data:', error);
         // Handle error, show an alert, etc.
@@ -87,6 +100,10 @@ function InstructionsPage() {
       }
     }
   };
+
+  const handleMainCategory = (categoryName) =>{
+    localStorage.setItem("selectedCategory4", categoryName);
+  }
 
   const handleCategory = (categoryName) =>{
     localStorage.setItem("selectedCategory", categoryName);
@@ -125,22 +142,21 @@ function InstructionsPage() {
   console.log(process.env.REACT_APP_SERVER_BASE_URL)
 
   return (
-    <div className="flex flex-col justify-center bg-white sm:px-8 px-6 py-6 rounded-lg shadow-lg max-w-3xl mx-auto md:mt-20 lg:mt-6 lg:mb-6 font-montserrat">
+    <div className="bg-gradient-to-t from-blue-900 to-slate-400 bg-cover bg-center sm:py-6 lg:pb-3 pb-2">
+    <div className="flex flex-col justify-center bg-white sm:px-8 px-6 py-6  rounded-lg shadow-lg max-w-3xl mx-auto md:mt-20 lg:mt-0 lg:mb-0 font-montserrat">
       <div className="flex items-center justify-center mb-4">
-      <img
-        src="https://github.com/marinersdrive/images/blob/main/Instructions%20Logo.png?raw=true"
-        alt="Logo"
-        className="w-28 h-24 sm:w-40 sm:h-32"
-      />
-
+        <img
+          src={Logo}
+          alt="Logo"
+          className="w-28 h-28 sm:w-40 sm:h-40"
+        />
       </div>
       
-      
-      <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-blue">Start your test now!</h2>
-      <p className="text-l sm:text-lg text-gray-600 mt-2">{selectedCategory}</p>
+      <h2 className="text-xl sm:text-2xl font-semibold mt-4 text-blue-800 font-montserrat tracking-normal">Start Now!</h2>
+      <p className="text-l sm:text-lg text-gray-600 mt-2 font-montserrat">{ct} - {selectedCategory} </p>
       <div className=" py-4 rounded-lg">
         <div className="border-0 border-light-gray bg-white flex-grow overflow-y-auto max-h-48 rounded-lg p-3 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] ">
-          <h3 className="text-l sm:text-xl font-semibold mb-2 text-blue">Test Instructions:</h3>
+          <h3 className="text-l sm:text-xl font-semibold mb-2 text-blue-800 font-montserrat tracking-normal">Test Instructions:</h3>
           <ul className="list-disc text-sm sm:text-base pl-6 text-gray-600">
           <li>Read each question carefully.</li>
           <li>Answer all questions to the best of your knowledge.</li>
@@ -161,7 +177,7 @@ function InstructionsPage() {
           </ul>
         </div>
         <div className="mt-6">
-          <label htmlFor="firstName" className="block mt-2 mb-2 text-dark-blue font-semibold text-sm sm:text-base">
+          <label htmlFor="firstName" className="block mt-2 mb-2 text-blue-900 font-semibold text-sm sm:text-base">
             Enter your First Name: <span className="text-red">*</span>
           </label>
           <input
@@ -173,7 +189,7 @@ function InstructionsPage() {
             onChange={handleFirstNameChange}
           />
 
-          <label htmlFor="lastName" className="block mt-3 text-dark-blue font-semibold text-sm sm:text-base">
+          <label htmlFor="lastName" className="block mt-3 text-blue-900 font-semibold text-sm sm:text-base">
             Enter your Last Name: <span className="text-red">*</span>
           </label>
           <input
@@ -185,7 +201,7 @@ function InstructionsPage() {
             onChange={handleLastNameChange}
           />
 
-          <label htmlFor="email" className="block mt-3 text-dark-blue font-semibold text-sm sm:text-base">
+          <label htmlFor="email" className="block mt-3 text-blue-900 font-semibold text-sm sm:text-base">
             Enter your Email Id: <span className="text-red">*</span>
           </label>
           <input
@@ -200,7 +216,7 @@ function InstructionsPage() {
           {!isEmailValid && (
             <p className="text-red text-sm mt-1 font-medium">Please enter a valid email address!</p>
           )}
-          <label htmlFor="indosNumber" className="block mt-3 text-dark-blue font-semibold text-sm sm:text-base">
+          <label htmlFor="indosNumber" className="block mt-3 text-blue-900 font-semibold text-sm sm:text-base">
             Enter your Indos Number: <span className="text-red">*</span>
           </label>
           <input
@@ -212,29 +228,31 @@ function InstructionsPage() {
             onChange={handleIndosNumberChange}
           />
 
-          <div className="flex items-center mt-3">
-            <input
-              type="checkbox"
-              id="agreement"
-              className="mr-1 h-2.5 w-3"
-              checked={isAgreed}
-              onChange={handleAgreementChange}
-              disabled={!isEmailValid}
-            />
-            <label htmlFor="agreement" className={`text-gray-600 text-xs ${isEmailValid ? '' : 'opacity-50'}`}>
-              I have read and agree to the instructions.
-            </label>
-          </div>
-
+        <div className="flex items-center mt-3">
+        <input
+            type="checkbox"
+            id="agreement"
+            className={`mr-1 h-2.5 w-3 ${
+            isEmailValid ? "" : "opacity-50 cursor-not-allowed"
+            }`}
+            checked={isAgreed}
+            onChange={handleAgreementChange}
+            disabled={!isEmailValid}
+        />
+        <label htmlFor="agreement" className="text-gray-600 text-xs">
+            I have read and agree to the instructions.
+        </label>
+        </div>
           
 
           <div className="flex items-center justify-between mt-6">
             <button
-              className={`bg-dark-blue text-white px-4 py-2 rounded hover:bg-blue font-semibold w-full ${
+              className={`bg-blue-900 border-b-4 border-b-blue-900 text-white px-4 py-2 rounded hover:bg-tp-darkest-blue font-semibold w-full ${
                 isFieldsValid && isEmailValid ? "" : "opacity-50 cursor-not-allowed"
               }`}
               onClick={() => {
                 handleProceed();
+                handleMainCategory(ct);
                 handleCategory(selectedCategory);
                 handleFirstName(firstName);
                 handleLastName(lastName);
@@ -245,7 +263,7 @@ function InstructionsPage() {
             >
                {isLoading ? (
           <span className="flex justify-center items-center">
-            <span className="mr-2">Proceed</span>
+            <span className="mr-2">Proceeding</span>
             <ThreeDots
               color="#8ECAE6"
               height={20}
@@ -259,6 +277,11 @@ function InstructionsPage() {
             </button>
           </div>
         </div>
+      </div>
+    </div>
+    <div className="flex items-center justify-center lg:mt-3 mt-2">
+        <FaChevronLeft className="text-gray-300 sm:mt-0 tracking-wide p-0.5 sm:p-0" />
+        <Link to="/" className="text-gray-300 text-center ml-2 border-b-2 sm:text-base text-xs transition duration-300 ease-in-out transform hover:scale-105 relative">Back to Home</Link>
       </div>
     </div>
   );

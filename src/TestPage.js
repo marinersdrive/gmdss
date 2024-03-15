@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import Logo from "./assets/bg2.png";
 import { useNavigate} from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { FiClock } from "react-icons/fi"; // Import the clock icon
@@ -13,7 +14,7 @@ function TestPage() {
   const navigate = useNavigate();
 
   const [selectedOption, setSelectedOption] = useState(null);
-  const [remainingTime, setRemainingTime] = useState(30); // 30 minutes in seconds
+  const [remainingTime, setRemainingTime] = useState(300); // 30 minutes in seconds
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -25,7 +26,11 @@ function TestPage() {
   let correct = 0;
   let incorrect = 0;
 
-  const selectedCategory = "GMDSS";
+  const selectedCategory = localStorage.getItem("selectedCategory3");
+  const ct = localStorage.getItem("selectedCategory4");
+
+  console.log(selectedCategory);
+  console.log(ct);
 
   useEffect(() => {
     window.history.pushState(null, null, window.location.href);
@@ -34,14 +39,26 @@ function TestPage() {
     };
   });
 
+  let intValue = 1;
+
+  if(ct === "IMU-CET"){
+    intValue = 1
+  }else if(ct === "DG Exit Exam"){
+    intValue = 2
+  }
+  else{
+    intValue = 3
+  }
+  console.log(`${process.env.REACT_APP_SERVER_BASE_URL}api/questions${intValue}`)
   // Fetch questions from the server
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}api/questions`)
+    axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}api/questions${intValue}`)
       .then(response => {
         // Filter questions by selectedCategory
         let filteredQuestions;
         let timeInSeconds = 30 * 60;
         let subCategory = "";
+        let cat = ""
 
         if (selectedCategory === "PCM") {
           const physicsQuestions = shuffleArray(response.data.filter(question => question.category === "Physics").slice(0, 30));
@@ -59,7 +76,64 @@ function TestPage() {
           const knowledgeQuestions = shuffleArray(response.data.filter(question => question.category === "General Knowledge").slice(0, 25));
           filteredQuestions = [...physicsQuestions, ...mathQuestions, ...chemistryQuestions, ...englishQuestions, ...aptitudeQuestions, ...knowledgeQuestions];
           timeInSeconds = 120 * 60;
-        } else {
+        } 
+        else if (selectedCategory === "EFA / Refresher") {
+          cat = "Elementary First Aid - EFA / Refresher"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "AFF / Refresher") {
+          cat = "Advanced Fire Fighting - AFF / Refresher"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "STSDSD") {
+          cat = "STSDSD - Security Training for Seafarers"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "FPFF / Refresher") {
+          cat = "Fire Prevention & Fire Fighting - FPFF / Refresher"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "PST / Refresher") {
+          cat = "Personal Survival Techniques - PST / Refresher"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "PSSR") {
+          cat = "Personal Safety & Social Responsibility - PSSR"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "TASCO") {
+          cat = "TASCO"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "CHEMCO") {
+          cat = "CHEMCO"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "GASCO") {
+          cat = "GASCO"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "OCTF / OCTCO") {
+          cat = "OCTF / OCTCO"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "MEDICARE / Refresher") {
+          cat = "MEDICARE / Refresher"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "PSCRB") {
+          cat = "PSCRB"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "MFA / Refresher") {
+          cat = "Medical First Aid - MFA / Refresher"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else if (selectedCategory === "PSF") {
+          cat = "Passenger Ship Familiarization - PSF"
+          filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+        } 
+        else {
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === selectedCategory).slice(0, 30));
         }
 
@@ -301,21 +375,22 @@ function TestPage() {
   if (loading) {
     // Display loading spinner while questions are loading
     return (
-      <div className="h-screen flex items-center justify-center bg-blue text-white">
+      <div className="h-screen flex items-center justify-center bg-gradient-to-t from-blue-900 to-slate-400 bg-cover bg-center text-white">
         <BeatLoader color="#ffffff" loading={loading} />
       </div>
     );
   }
 
   return (
+    <div className="bg-gray-300 bg-cover bg-center">
     <div onCopy={(e) => e.preventDefault()} className="h-screen flex flex-col justify-between font-montserrat overflow-y-none">
       {/* Header section */}
-      <div className="bg-blue text-white p-4 flex justify-between items-center hover:bg-opacity-90 transition duration-300 ease-in-out">
+      <div className="bg-darkest-blue text-white flex py-1 px-4 justify-between items-center hover:bg-opacity-90 transition duration-300 ease-in-out">
         <div className="flex items-center space-x-4">
           <img
-            src="https://github.com/marinersdrive/images/blob/main/Test%20Logo.png?raw=true"
+            src={Logo}  
             alt="Logo"
-            className="sm:w-14 sm:h-12 w-12 h-10"
+            className="sm:w-20 sm:h-20 w-16 h-16"
           />
           <div>
             <p className="text-base sm:text-lg font-semibold">Mariner's Drive</p>
@@ -334,9 +409,9 @@ function TestPage() {
         {/* Question information section */}
         <div className="p-6 space-y-4">
           <div className="flex justify-between items-center hover:bg-opacity-90 transition duration-300 ease-in-out">
-            <p className="text-black text-opacity-80 sm:text-base font-medium text-xs">Question {currentQuestionIndex + 1} of {questions.length}</p>
-            <p className="text-black text-opacity-80 sm:text-base font-medium text-xs">Marks: 1</p>
-            <p className="text-black text-opacity-80 sm:text-base font-medium text-xs">Section: GMDSS</p>
+            <p className="text-darkest-blue text-opacity-80 sm:text-base font-medium text-xs">Question {currentQuestionIndex + 1} of {questions.length}</p>
+            <p className="text-darkest-blue text-opacity-80 sm:text-base font-medium text-xs">Marks: 1</p>
+            <p className="text-darkest-blue text-opacity-80 sm:text-base font-medium text-xs">Section: {ct}</p>
           </div>
         </div>
           
@@ -375,17 +450,17 @@ function TestPage() {
               </div>)}
 
               {/* Button section */}
-              <div className="bg-blue text-white text-sm sm:text-base p-4 text-center flex justify-between items-center hover:bg-opacity-90 transition duration-300 ease-in-out">
+              <div className="bg-darkest-blue text-sm sm:text-base p-4 text-center flex justify-between items-center hover:bg-opacity-90 transition duration-300 ease-in-out">
               <button
-                className="px-10 py-3 bg-dark-blue rounded-lg hover:bg-orange-dark font-semibold"
+                className="px-10 py-3 bg-gray-300 text-darkest-blue rounded-lg hover:bg-gray-800 font-semibold"
                 onClick={handleClearSelection}
               >
                 Clear
               </button>
 
               {isLastQuestion ? (
-              <button className="px-10 py-3 bg-green rounded-lg font-semibold hover:bg-opacity-90 transition duration-300 ease-in-out" onClick={()=>{handleFinish1()}}>Finish</button>
-              ) : (<button className="px-10 py-3 bg-dark-blue rounded-lg font-semibold hover:bg-opacity-90 transition duration-300 ease-in-out" onClick={handleNextQuestion}>Next</button>)}
+              <button className="px-10 py-3 bg-dark-green text-gray-800 rounded-lg font-semibold hover:bg-green transition duration-300 ease-in-out" onClick={()=>{handleFinish1()}}>Finish</button>
+              ) : (<button className="px-10 py-3 bg-gray-300 text-darkest-blue rounded-lg font-semibold hover:bg-gray-800 transition duration-300 ease-in-out" onClick={handleNextQuestion}>Next</button>)}
           
               {console.log(correctCount)}
               {console.log(incorrectCount)}
@@ -395,6 +470,7 @@ function TestPage() {
           
         
       <ToastContainer />
+    </div>
     </div>
   );
 }

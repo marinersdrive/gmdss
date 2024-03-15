@@ -1,0 +1,46 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap";
+
+body {
+  background: rgb(11,0,26);
+  background: linear-gradient(85deg, rgba(20,50,97,1) 0%, rgba(11,0,26,1) 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.backspace-animation {
+  animation: backspaceAnimation 0.5s forwards;
+}
+
+@keyframes backspaceAnimation {
+  from {
+    width: 0;
+  }
+  to {
+    width: auto;
+  }
+}
+
+.menu-container {
+  background-image: url("./assets/Main.png");
+  height: 100vh; /* Set the default height */
+  width: 100%; 
+  transition: background-color 0.3s ease;
+  padding-top: 100px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+
+
+  &.open {
+    background-image: url("./assets/Main.png"); /* Change background color when the menu is open */
+    height: 100vh;
+    padding-top: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+  }
+
+  /* Add other styling as needed */
+}
+
