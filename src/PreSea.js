@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { injectStyle } from "react-toastify/dist/inject-style";
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -223,7 +224,7 @@ function PreSea() {
             </p>
           </div>
         </div>
-        <div className="bg-white h-52 p-4 flex items-start">
+        <div className="bg-white sm:h-56 h-48 p-4 flex items-start">
           <p className="text-black text-sm font-montserrat items-center text-justify leading-6 font-medium">
           Click here to get detailed information about {news.heading} and the latest updates essential for your Pre-Sea training. Prepare thoroughly with our resources for a successful outcome.
 

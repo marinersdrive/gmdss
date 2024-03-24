@@ -129,7 +129,7 @@ function TestPage() {
           cat = "OCTF / OCTCO"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
         } 
-        else if (selectedCategory === "MEDICARE / Refresher") {
+        else if (selectedCategory === "Medicare / Refresher") {
           cat = "MEDICARE / Refresher"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
         } 
