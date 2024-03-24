@@ -270,10 +270,9 @@ document.body.classList.add('instructions-page');
               disabled={!isFieldsValid}
             >
                {isLoading ? (
-          <span className="flex justify-center items-center">
-            <span className="mr-2">Proceeding</span>
+          <span className="flex justify-center items-center opacity-50 cursor-not-allowed">
             <ThreeDots
-              color="#8ECAE6"
+              color="#F6F6F6"
               height={20}
               width={20}
               visible={isLoading}

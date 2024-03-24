@@ -38,7 +38,15 @@ function TestPage() {
   useEffect(() => {
     window.history.pushState(null, null, window.location.href);
     window.onpopstate = function () {
-      navigate(0);
+      toast(<ConfirmDialog2 onYes={navigateToPreviousPage} onClose={dismissPage} />, {
+        position: "top-center",
+        autoClose: false,
+        closeButton: false,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+      });
+      //navigate("/instructionspage");
     };
   });
 
@@ -237,6 +245,26 @@ function TestPage() {
     );
   }
 
+  function ConfirmDialog2({ onYes, onClose }) {
+    return (
+      <div className="mx-auto text-center">
+        <p className="text-gray-600 text-lg mb-4">Are you sure you want to finish?</p>
+        <button
+          className="bg-green text-white px-4 py-2 rounded-md mr-2 hover:bg-opacity-80 transition duration-300 ease-in-out"
+          onClick={navigateToPreviousPage}
+        >
+          Yes
+        </button>
+        <button
+          className="bg-red text-white px-4 py-2 rounded-md hover:bg-opacity-80 transition duration-300 ease-in-out"
+          onClick={dismissPage}
+        >
+          No
+        </button>
+      </div>
+    );
+  }
+
   // Function to handle moving to the next question
   const handleNextQuestion = () => {
     if (selectedOption === null) {
@@ -336,6 +364,10 @@ function TestPage() {
   }
   };
 
+  const navigateToPreviousPage = () => {
+    toast.dismiss();
+    navigate("/testseriespage");
+  }
   const navigateToNextPage = () => {
     toast.dismiss();
     navigate("/ResultPage"); // Replace with the URL of the next page
