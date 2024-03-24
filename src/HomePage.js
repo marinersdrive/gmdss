@@ -9,7 +9,6 @@ import gifImage from "./assets/main-logo-unscreen.gif";
 import insta from "./assets/instagram.png";
 import twitter from "./assets/twitter.png";
 import linkedin from "./assets/linkedin.png";
-import banner from "./assets/banner.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faBars, faTimes, faArrowLeft, faArrowRight, faFilePdf} from "@fortawesome/free-solid-svg-icons";
 import { push as Menu } from "react-burger-menu";
@@ -343,7 +342,7 @@ function HomePage() {
       <div className="w-full text-center">
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Learn, Navigate, Conquer:</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Your Path to the</h3>
-        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-12 mb-8">Merchant Navy</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-12 mb-8">Merchant Navy!</h3>
         {/* Add your content for the Sponsorship section */}
         <p className="text-white font-montserrat font-normal text-justify lg:text-base text-sm lg:ml-8 lg:mr-14 lg:px-52 px-8">Embarking on a maritime career is a voyage that demands not only skill and knowledge but also a trusted guide. At Mariner's Drive, we are that guiding light for aspiring seafarers. Our mission is to provide a comprehensive educational pathway that encompasses every critical phase of the maritime journey—from the foundational pre-sea guidance to the practical on-board training modules, and extending to the advanced post-sea resources.</p> 
     <p className="text-white font-montserrat font-normal text-justify lg:text-base text-sm lg:ml-8 lg:mr-14 lg:px-52 px-8 lg:mt-8 mt-6">Our offerings are designed to ensure a seamless transition at every stage of your maritime career. We take pride in our meticulously crafted mock tests for IMU-CET, Sponsorship Exams, DG Exit Exams, and GMDSS, each one curated with precision and the aim of fostering success. These tests are more than just assessments; they are stepping stones that prepare you for the challenges of the maritime world.</p>
