@@ -1180,14 +1180,6 @@ function PdfDetails() {
       <div class="flex items-center justify-between">
         <div class="navigation flex items-center space-x-2 lg:mb-6 mb-3">
         {/* Add a Link to the Home page */}
-        <Link to="/" className="text-white font-montserrat font-semibold text-sm lg:text-lg tracking-wider mb-2">
-          Home
-        </Link>
-        <FaChevronRight className=" text-white mb-2 p-1 sm:p-0" />
-        <Link to="/postseapage" className="text-white font-montserrat font-semibold text-sm lg:text-lg tracking-wider mb-2">
-          Post - Sea
-        </Link>
-        <FaChevronRight className=" text-white mb-2 p-1 sm:p-0" />
         <Link to="/pdfdetailspage" className="text-white font-montserrat font-semibold text-sm lg:text-lg tracking-wider mb-2">
           {selectedCategory1}
         </Link>
