@@ -67,7 +67,7 @@ function ResultPage() {
   const isPass = (correctCount / totalQuestions) * 100 >= passPercentage;
   let totalMarks = parseInt(correctCount)
 
-  if (selectedCategory === "Physics" || selectedCategory === "Chemistry" || selectedCategory === "Mathematics" || selectedCategory === "General English" || selectedCategory === "General Aptitude" || selectedCategory === "General Knowledge"){
+  if (selectedCategory === "Physics" || selectedCategory === "Chemistry" || selectedCategory === "Mathematics" || selectedCategory === "General English" || selectedCategory === "General Aptitude" || selectedCategory === "General Knowledge" || selectedCategory === "General Knowledge" || selectedCategory === "PCM" || selectedCategory === "Final Mock"){
       totalMarks = parseInt(correctCount) - 0.25 * parseInt(incorrectCount)
   }
   else{
