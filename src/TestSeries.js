@@ -80,7 +80,7 @@ function TestSeries() {
       category: "DG Exit Exam",
       heading: "Security Training for Seafarers",
       sub_heading: "STSDSD",
-      url: ""
+      url: "https://drive.google.com/file/d/1xEA3myWkEJyeknxXT21k5WFzQoJDOurD/view?usp=drive_link"
     },
     {
       category: "DG Exit Exam",
@@ -92,13 +92,13 @@ function TestSeries() {
       category: "DG Exit Exam",
       heading: "Personal Survival Techniques",
       sub_heading: "PST / Refresher",
-      url: ""
+      url: "https://drive.google.com/file/d/1BGspkrFSBRdI9Asrrn_hK3ENNT9sHaaj/view?usp=drive_link"
     },
     {
       category: "DG Exit Exam",
       heading: "Personal Safety & Social Resp.",
       sub_heading: "PSSR",
-      url: ""
+      url: "https://drive.google.com/file/d/1lgVirz0QWG5MsypCdYwX-Y168xmOLg4o/view?usp=drive_link"
     },
     {
       category: "DG Exit Exam",
@@ -122,7 +122,7 @@ function TestSeries() {
       category: "DG Exit Exam",
       heading: "OCTF / OCTCO",
       sub_heading: "OCTF / OCTCO",
-      url: ""
+      url: "https://drive.google.com/file/d/1z0j8ARVf7OFdFv37hbv07QEYCCQTT9dY/view?usp=drive_link"
     },
     {
       category: "DG Exit Exam",
@@ -146,7 +146,7 @@ function TestSeries() {
       category: "DG Exit Exam",
       heading: "Passenger Ship Familiarization",
       sub_heading: "PSF",
-      url: ""
+      url: "https://drive.google.com/file/d/1qMWRmhhsnh21vCiWg7QDI7sS_UMcu375/view?usp=drive_link"
     },
     {
       category: "GMDSS",
