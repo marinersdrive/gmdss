@@ -174,7 +174,6 @@ function TestSeries() {
 
   const handleCategoryClick2 = (categoryName) => {
     localStorage.setItem("selectedCategory3", categoryName);
-<<<<<<< HEAD
     if (selectedTab === "IMU-CET" && categoryName === "Physics"){
       window.open("https://rzp.io/l/u4D26sq", "_blank"); 
       //navigate("/instructionspage");
@@ -192,10 +191,6 @@ function TestSeries() {
       window.open("https://payments.pabbly.com/subscribe/65fa83ea628ddf6d7e9c62af/PCM", "_blank"); 
     }else if (selectedTab === "IMU-CET" && categoryName === "Final Mock"){
       window.open("https://payments.pabbly.com/subscribe/65fa8463bf7cc96d66ba2bd2/FINAL-MOCK", "_blank"); 
-=======
-    if (selectedTab === "IMU-CET"){
-      window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/imu-cet", "_blank"); 
->>>>>>> ad8df8669195e0071be1b826b3a5fa7e52fd31ce
     }
     else{
       navigate("/instructionspage");
