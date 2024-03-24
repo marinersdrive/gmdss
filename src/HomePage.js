@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 import { ToastContainer, toast } from "react-toastify";
+import { injectStyle } from "react-toastify/dist/inject-style";
 import { useNavigate} from "react-router-dom";
 import Logo from "./assets/bg2.png";
 import gifImage from "./assets/main-logo-unscreen.gif";
 import insta from "./assets/instagram.png";
 import twitter from "./assets/twitter.png";
 import linkedin from "./assets/linkedin.png";
+import banner from "./assets/banner.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faBars, faTimes, faArrowLeft, faArrowRight, faFilePdf} from "@fortawesome/free-solid-svg-icons";
 import { push as Menu } from "react-burger-menu";
 
 function HomePage() {
+  
+  injectStyle();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -57,6 +62,7 @@ function HomePage() {
     const searchText = searchTerm.toLowerCase();
     const elements = document.querySelectorAll('p, h1, h2, h3'); // Adjust the tag name based on your content structure
   
+    
     let occurrences = [];
     for (const element of elements) {
       const text = element.innerText.toLowerCase();
@@ -91,7 +97,7 @@ function HomePage() {
     } else {
       toast.error('No search results found!', { position: "top-center", autoClose: 1000 });
     }
-  
+
     if (searchText === '') {
       setCurrentOccurrence(0);
       occurrences.forEach((element) => {
@@ -100,6 +106,7 @@ function HomePage() {
       });
       occurrences.length = 0;
     }
+
   };
   
   const handleKeyDown = (e) => {
@@ -153,6 +160,7 @@ function HomePage() {
 
   // State variables for news bulletin
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
+  const [currentDetailsIndex, setCurrentDetailsIndex] = useState(0);
 
   // Move to the next news item
   // Functions to handle navigation
@@ -161,7 +169,18 @@ function HomePage() {
   };
 
   const nextNews = () => {
-    setCurrentNewsIndex((prevIndex) => (prevIndex + 1) % (newsItems.length - 2));
+    setCurrentNewsIndex((prevIndex) => {
+      // Check if it's a small device (screen width less than 1024)
+      const isSmallDevice = window.innerWidth < 1024;
+      
+      // Apply modulo operation accordingly
+      if (isSmallDevice) {
+        return (prevIndex + 1) % newsItems.length;
+      } else {
+        // For large devices, limit the index to be within 0 to 2
+        return (prevIndex + 1) % (newsItems.length - 2);
+      }
+    });
   };
 
   // Use useEffect for updating the news every 5 seconds
@@ -173,6 +192,52 @@ function HomePage() {
     return () => clearInterval(intervalId);
   }, [currentNewsIndex]);
   
+  const nextDetails = () => {
+    setCurrentDetailsIndex((prevIndex) => (prevIndex + 1) % prodDetails.length);
+  }
+
+  // Use useEffect for updating the news every 5 seconds
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextDetails();
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [currentDetailsIndex]);
+
+  const prodDetails = [
+    {
+      id: 1, 
+      category: "IMU-CET (Category- Wise)",
+      mrp: 99,
+      sp: 49
+    },
+    {
+      id: 2, 
+      category: "IMU-CET (PCM)",
+      mrp: 149,
+      sp: 119
+    },
+    {
+      id: 3, 
+      category: "IMU-CET (Final Mock)",
+      mrp: 199,
+      sp: 149
+    },
+    {
+      id: 4,
+      category: "DG Exit Exam",
+      mrp: 100,
+      sp: 99
+    },
+    {
+      id: 5,
+      category: "GMDSS",
+      mrp: 200,
+      sp: 150
+    }
+  ]
+
   return (
     <div>
       <div className="lg:fixed lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:pb-6">
@@ -188,20 +253,24 @@ function HomePage() {
         {/* Navigation Menu */}
         <div className="hidden lg:flex justify-end mr-14 mt-8">
           {/* Search Bar */}
-          <div className="flex items-center border rounded-md bg-white px-4 py-1 mb-0.25 mr-4 relative">
-            <FontAwesomeIcon icon={faSearch} className="text-gray-600" />
-            <input
-              id="search-input"
-              type="text"
-              placeholder={placeholders[currentPlaceholderIndex]}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="bg-transparent outline-none placeholder-gray-400 pl-4 w-full"
-            />
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-              <div className="w-1 h-4 bg-gray-300 animate-blink"></div>
-            </div>
+          <div className="flex items-center border rounded-md bg-white px-4 py-1 mr-4 relative">
+              <FontAwesomeIcon icon={faSearch} className="text-gray-600" />
+              <input
+                  id="search-input"
+                  type="text"
+                  placeholder={placeholders[currentPlaceholderIndex]}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  className="bg-transparent outline-none placeholder-gray-600 pl-4 w-full"
+              />
+              {searchTerm && (
+                  <FontAwesomeIcon
+                      icon={faTimes}
+                      className="text-gray-600 cursor-pointer mr-1"
+                      onClick={() => setSearchTerm('')} // This clears the search term
+                  />
+              )}
           </div>
           
           {/* Regular Menu Items */}
@@ -252,7 +321,7 @@ function HomePage() {
           <p className="text-white font-montserrat font-medium text-base lg:text-lg tracking-wider mb-8">Your Path to the Merchant Navy!</p>
           <div className="flex items-center justify-center">
             <a href="https://www.instagram.com/marinersdrive?igsh=MWE5bzBjaHR6ZTF2dA%3D%3D&utm_source=qr"><img src={insta} alt="insta" className="w-8 h-8 lg:w-12 lg:h-12" /></a>
-            <a href="Twitter.com/marinersdrive"><img src={twitter} alt="twitter" className="w-8 h-8 lg:w-12 lg:h-12 ml-3" /></a>
+            <a href="www.twitter.com/marinersdrive"><img src={twitter} alt="twitter" className="w-8 h-8 lg:w-12 lg:h-12 ml-3" /></a>
             <a href="https://www.linkedin.com/in/mariner%E2%80%99s-drive-4874142b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><img src={linkedin} alt="linkedin" className="w-8 h-8 lg:w-12 lg:h-12 ml-3" /></a>
           </div>
         </div>
@@ -263,7 +332,136 @@ function HomePage() {
         </div>
       </div>
       {/* Thick Page Divider */}
+      <div className="my-8 lg:my-20 text-center">
+      <p className="text-darkest-blue font-montserrat bg-light-blue lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center  tracking-wider">
+        Mariner's Drive
+      </p>
+    </div>
+    <div className="lg:flex justify-between mx-4 lg:mx-12 h-full">
+      {/* Pre-Sea Section */}
+      <div className="w-full text-center">
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Learn, Navigate, Conquer:</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Your Path to the</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-12 mb-8">Merchant Navy</h3>
+        {/* Add your content for the Sponsorship section */}
+        <p className="text-white font-montserrat font-normal text-justify lg:text-base text-sm lg:ml-8 lg:mr-14 lg:px-52 px-12">Embarking on a maritime career is a voyage that demands not only skill and knowledge but also a trusted guide. At Mariner's Drive, we are that guiding light for aspiring seafarers. Our mission is to provide a comprehensive educational pathway that encompasses every critical phase of the maritime journey—from the foundational pre-sea guidance to the practical on-board training modules, and extending to the advanced post-sea resources.</p> 
+    <p className="text-white font-montserrat font-normal text-justify lg:text-base text-sm lg:ml-8 lg:mr-14 lg:px-52 px-12 lg:mt-8 mt-6">Our offerings are designed to ensure a seamless transition at every stage of your maritime career. We take pride in our meticulously crafted mock tests for IMU-CET, Sponsorship Exams, DG Exit Exams, and GMDSS, each one curated with precision and the aim of fostering success. These tests are more than just assessments; they are stepping stones that prepare you for the challenges of the maritime world.</p>
+    <p className="text-white font-montserrat font-normal text-justify lg:text-base text-sm lg:ml-8 lg:mr-14 lg:px-52 px-12 lg:mt-8 mt-6">Mariner's Drive was conceived from the idea of centralizing quality educational content, to create a single, accessible platform where students can find all the resources they need to assist their maritime journey. We stand as a beacon, guiding students through the tides of maritime education with ease, expertise, and an unwavering commitment to their success. Join us at Mariner's Drive, where your maritime aspirations set sail.</p>
+        
+      </div>
+
+      {/* ... (existing sections) */}
+
+    </div>
       {/* Thick Page Divider */}
+      <div className="lg:my-4 my-0 text-center">
+      <p className="text-darkest-blue font-montserrat lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center tracking-wider">
+      </p>
+    </div>
+    {/* News Bulletin Section */}
+    <div class="mx-12 lg:p-0 p-4 lg:mx-24 lg:h-full rounded-2xl bg-blue-900  animate-[wiggle_1s_ease-in-out_infinite]">
+    {Object.keys(prodDetails)
+      .slice(currentDetailsIndex, currentDetailsIndex + 1)
+      .map((key, index) => {
+        const details = prodDetails[key];
+        return (
+          <div key={key} class="lg:flex w-full justify-between items-center rounded-lg">
+          <div class="items-center ml-4 lg:my-4">
+          <h2 className="lg:m-6 mt-4 text-white lg:text-3xl text-base tracking-wider lg:font-semibold font-medium">Practice Makes Perfect: Master your exams</h2>
+          <p className="lg:m-6 mt-4 text-white lg:text-2xl text-base bg-red rounded-lg p-2 w-1/2 text-center">Limited Time Offer!</p>
+          <h2 className="hidden lg:block lg:mx-6 mt-3 text-white lg:text-2xl text-base tracking-wider">{details.category}</h2>
+          <button className="hidden lg:block shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset] 
+          font-montserrat text-white tracking-wide font-semibold border-2 bg-darkest-blue py-2 lg:px-12 px-8 lg:text-base text-sm rounded lg:m-6 mt-4" 
+          onClick={() => navigate('/testseriespage')}>Start Now!</button>
+          </div>
+          <div class="mr-8 lg-0 lg:my-0 m-4 mt-6">
+            <div className="flex animate-pulse items-start">
+            {details.id !== 4 && details.id !== 5? (
+              <>
+            <div className="text-white border-y-2 border-l-2 font-medium lg:px-6 lg:py-3 px-4 py-1 bg-darkest-blue rounded-l-lg border-r-2 border-white font-montserrat lg:text-2xl text-base">
+              ₹ {details.sp}
+            </div>
+            <div className="text-white border-y-2 border-r-2 font-medium lg:px-6 lg:py-3 px-4 py-1 bg-darkest-blue  rounded-r-lg relative">
+              <div className="font-montserrat lg:text-2xl text-base">₹ {details.mrp}</div>
+              <span className="cross absolute top-0 right-0 w-full h-full overflow-hidden">
+                <span className="line absolute top-1/2 right-0 w-full h-0.5 bg-red transform -translate-y-1/2 rotate-45"></span>
+              </span>
+            </div>
+            </>
+    ) : (
+      <div className="text-white border-2 font-medium px-2 py-1 bg-darkest-blue rounded-lg font-montserrat tracking-wider lg:text-3xl text-lg">
+        FREE
+      </div>
+    )}
+            </div>
+            <h2 className="lg:hidden lg:mx-6 my-4 text-white lg:text-2xl text-base tracking-wider">{details.category}</h2>
+            <button className="lg:hidden shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset] 
+          font-montserrat text-white tracking-wide font-semibold border-2 bg-darkest-blue py-2 lg:px-12 px-7 lg:text-base text-sm rounded lg:m-6" 
+          onClick={() => navigate('/testseriespage')}>Start Now!</button>
+          </div>
+      </div>
+    );
+      })}
+    <div>
+    </div>
+</div>
+
+
+      <div className="my-8 lg:my-20 text-center">
+      <p className="text-darkest-blue font-montserrat bg-light-blue lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center  tracking-wider">
+        How to join Merchant Navy?
+      </p>
+    </div>
+    <div className="lg:flex justify-between mx-4 lg:mx-12 h-full">
+      {/* Pre-Sea Section */}
+      <div className="w-full lg:w-1/3 text-center lg:mt-4 mt-12">
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Method 1:</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Joining the Merchant Navy</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">as a</h3> 
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-4 mb-2">Deck Officer</h3>
+
+        <br></br>
+        <p className="text-white font-montserrat font-normal text-sm lg:text-base text-justify ml-8 mr-8">Joining the Merchant Navy as a Deck Officer involves completing 12th-grade education with Physics, Chemistry, and Mathematics, securing a minimum of 60%. Next, pass the Indian Maritime University Common Entrance Test (IMU CET) and clear medical exams. Additionally, pass sponsorship exams by shipping companies for onboard training and future employment. Enroll in a BSc Nautical Science program or a Diploma in Nautical Science post-graduation. Undergo an 18-month (for DNS candidates) or a 12-month (for BSc. candidates) cadet onboard training, followed by a competency exam regulated by the Indian government. Begin as a Third Officer, progress through annual examinations, and aim to reach the rank of Captain. At Mariners Drive, we offer guidance throughout this process, ensuring a seamless journey into the Merchant Navy.</p>
+      
+        <br></br>
+        {/* Content for Pre-Sea Section */}
+        {/* Add your content here */}
+      </div>
+      <div>
+        <hr className="lg:invisible visible border-t-4 border-light-blue mt-12 rounded-3xl mx-6" />
+      </div>
+      {/* On-board Training Section */}
+      <div className="w-full lg:w-1/3 text-center lg:mt-4 mt-12">
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Method 2:</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Joining the Merchant Navy</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">as an</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-4 mb-2">Engineer Officer</h3>
+        <br></br>
+        <p className="text-white font-montserrat font-normal text-sm lg:text-base text-justify ml-8 mr-8">Engineering graduates can embark on a career in the Merchant Navy by obtaining a degree in Marine Engineering or a related field such as Mechanical, Civil, or Electrical Engineering. With a minimum of 50% marks in their engineering degree, candidates then pursue a one-year Graduate Marine Engineer Course. This comprehensive program includes an 8-month classroom (pre-sea) training followed by a 4-month onboard training. Admission to this course typically involves clearing an entrance exam.
+          After completing the course, graduates become eligible to appear for the Certificate of Competency (CoC) exams. Upon successfully passing these exams, they can commence their journey in the Merchant Navy as Fourth Engineers. At Mariners Drive, we offer guidance throughout this process, ensuring a seamless journey into the Merchant Navy.</p>
+        {/* Content for On-board Training Section */}
+        {/* Add your content here */}
+      </div>
+      <div>
+        <hr className="lg:invisible visible border-t-4 border-light-blue mt-12 rounded-3xl mx-6" />
+      </div>
+
+      {/* Post-Sea Section */}
+      <div className="w-full lg:w-1/3 text-center lg:mt-4 mt-12">
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Method 3:</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Joining the Merchant Navy</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">as a</h3>
+        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-4 mb-2">Rating (Crew)</h3>
+        <br></br>
+        <p className="text-white font-montserrat font-normal text-sm lg:text-base text-justify ml-8 mr-8">Candidates can join the Merchant Navy as ratings after completing their 10th grade with English, Science, and Mathematics, or their 12th grade in any stream. Following this, they undergo a six-month General Purpose Rating (GPR) course, encompassing deck and engine work.
+        Upon completion of the GPR course, candidates become eligible for rating positions in either the deck or engine departments of merchant ships. With accrued experience, they can progress to roles such as leading seaman, bosun, or petty officer.
+        Aspiring officers must pass NCV (NWKO) exams. Following six months as an NCV (NWKO) officer, they qualify to undertake the 2nd mate foundation and functions exam. At Mariners Drive, we offer guidance throughout this process, ensuring a seamless journey into the Merchant Navy.
+</p>
+        {/* Content for Post-Sea Section */}
+        {/* Add your content here */}
+        <br></br>
+      </div>
+    </div>
       <div className="my-8 lg:my-20 text-center">
       <p className="text-darkest-blue font-montserrat bg-light-blue lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center  tracking-wider">
         Navigating your Maritime Journey
@@ -559,7 +757,7 @@ function HomePage() {
         <p className="text-white font-montserrat font-normal text-center lg:mr-4 mb-8 lg:text-base text-sm">Whether you have questions about maritime education, feedback or suggestions on our platform, or just want to say hello, we'd love to hear from you. Our dedicated team is committed to providing assistance and guidance on your journey in the maritime industry. Your inquiries are valuable to us, and we look forward to connecting with you to ensure you have the best experience on Mariner's Drive.</p>
         <p className="text-white font-montserrat font-normal text-center lg:mr-4 mb-8 lg:text-base text-sm">Sail on with Mariner's Drive – where your maritime dreams set sail!</p>
         <p className="text-white font-montserrat font-semibold text-center mb-2 lg:text-base text-sm">Email:</p>
-        <p className="text-white font-montserrat font-normal text-center mb-12 lg:text-base text-sm">marinersdrive.com@gmail.com</p>
+        <p className="text-white font-montserrat font-normal text-center lg:mb-12 mb-20 lg:text-base text-sm">marinersdrive.com@gmail.com</p>
       </div>
     </div>
   </div>

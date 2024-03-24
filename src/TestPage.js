@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Logo from "./assets/bg2.png";
 import { useNavigate} from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import { injectStyle } from "react-toastify/dist/inject-style";
 import { FiClock } from "react-icons/fi"; // Import the clock icon
 import axios from "axios"; // Import axios for making HTTP requests
 import shuffleArray from "shuffle-array"; // Import the shuffle-array library
@@ -10,6 +11,8 @@ import { BeatLoader } from "react-spinners";
 
 
 function TestPage() {
+
+  injectStyle();
 
   const navigate = useNavigate();
 
@@ -29,8 +32,8 @@ function TestPage() {
   const selectedCategory = localStorage.getItem("selectedCategory3");
   const ct = localStorage.getItem("selectedCategory4");
 
-  console.log(selectedCategory);
-  console.log(ct);
+  //console.log(selectedCategory);
+  //console.log(ct);
 
   useEffect(() => {
     window.history.pushState(null, null, window.location.href);
@@ -49,7 +52,8 @@ function TestPage() {
   else{
     intValue = 3
   }
-  console.log(`${process.env.REACT_APP_SERVER_BASE_URL}api/questions${intValue}`)
+
+  //console.log(`${process.env.REACT_APP_SERVER_BASE_URL}api/questions${intValue}`)
   // Fetch questions from the server
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}api/questions${intValue}`)

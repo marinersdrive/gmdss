@@ -139,6 +139,14 @@ document.body.classList.add('instructions-page');
     }
   };
   
+  const negativeMarking = (ct) => {
+    switch (ct){
+      case "IMU-CET":
+        return {negative: '-0.25'};
+      default:
+        return {negative: 'no'}
+    }
+  }
   console.log(process.env.REACT_APP_SERVER_BASE_URL)
 
   return (
@@ -164,7 +172,7 @@ document.body.classList.add('instructions-page');
           <li>Duration: {getDetailsByCategory(selectedCategory).minutes} minutes</li>
           <li>Pass marks: {(getDetailsByCategory(selectedCategory).marks)/2}</li>
           <li>Each question carries equal marks.</li>
-          <li>There is no negative marking for incorrect answers.</li>
+          <li>There is {negativeMarking(ct).negative} negative marking for incorrect answers.</li>
           <li>You cannot go back to a previous question.</li>
           <li>Please ensure a stable internet connection before starting the test.</li>
           <li>Close any unnecessary tabs or programs to optimize performance.</li>
@@ -247,7 +255,7 @@ document.body.classList.add('instructions-page');
 
           <div className="flex items-center justify-between mt-6">
             <button
-              className={`bg-blue-900 border-b-4 border-b-blue-900 text-white px-4 py-2 rounded hover:bg-tp-darkest-blue font-semibold w-full ${
+              className={`bg-blue-900 border-b-4 text-white px-4 py-2 rounded hover:bg-tp-darkest-blue font-semibold w-full ${
                 isFieldsValid && isEmailValid ? "" : "opacity-50 cursor-not-allowed"
               }`}
               onClick={() => {

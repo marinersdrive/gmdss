@@ -28,7 +28,7 @@ module.exports = {
       "blue-900": "#314C75",
       "slate-400": "#CFD8DC",
       "blue-800": "#4F6589",
-      "black2":"#0b001a"
+      "black2":"#0B001A",
     },
     linearGradientColors: {
       'custom-gradient': ['rgba(11, 0, 26, 1)', 'rgba(142, 202, 230, 1)'],

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import { faFilePdf, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FaChevronRight } from "react-icons/fa";
 
 function PdfDetails() {
@@ -244,9 +245,85 @@ function PdfDetails() {
     (item) => item.category === selectedCategory
   );
 
+  const placeholders = ["Search"];
+  const [currentPlaceholderIndex, setCurrentPlaceholderIndex] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentOccurrence, setCurrentOccurrence] = useState(0);
+  
+  const changeColor = () => {
+    setSearchTerm(''); 
+  };
+
+  const handleSearch = () => {
+    const searchText = searchTerm.toLowerCase();
+    const elements = document.querySelectorAll('p, h1, h2, h3'); // Adjust the tag name based on your content structure
+  
+    
+    let occurrences = [];
+    for (const element of elements) {
+      const text = element.innerText.toLowerCase();
+  
+      if (text.includes(searchText)) {
+        occurrences.push(element);
+      }
+    }
+  
+    if (occurrences.length > 0) {
+      // Reset style for the previously highlighted element
+      const previousOccurrence = occurrences[(currentOccurrence - 1 + occurrences.length) % occurrences.length];
+  
+      if (previousOccurrence) {
+        previousOccurrence.style.backgroundColor = '';
+        previousOccurrence.style.color = ''; // Reset text color
+      }
+  
+      // Move to the next occurrence
+      // Check if the last occurrence is reached, then reset the counter and show toast.error
+      if (currentOccurrence < occurrences.length) {
+        setCurrentOccurrence(currentOccurrence + 1);
+        const currentElement = occurrences[currentOccurrence];
+        currentElement.style.backgroundColor = 'yellow';
+        currentElement.style.color = 'black';
+        currentElement.scrollIntoView({ behavior: 'smooth' });
+      }else {
+        setCurrentOccurrence(0);
+        toast.error('No search results found!', { position: "top-center", autoClose: 1000 });
+        return;
+      }
+    } else {
+      toast.error('No search results found!', { position: "top-center", autoClose: 1000 });
+    }
+
+    if (searchText === '') {
+      setCurrentOccurrence(0);
+      occurrences.forEach((element) => {
+        element.style.backgroundColor = '';
+        element.style.color = ''; // Reset text color
+      });
+      occurrences.length = 0;
+    }
+
+  };
+  
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      // Trigger search when Enter key is pressed
+      handleSearch();
+    }
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentPlaceholderIndex((prevIndex) => (prevIndex + 1) % placeholders.length);
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <div className="min-h-screen sm:px-8 px-6 pt-8 mb-4 sm:mb-0 font-montserrat overflow-hidden">
-      <div className="flex space-x-2 items-center mb-6">
+      <div class="flex items-center justify-between">
+        <div class="navigation flex items-center space-x-2 lg:mb-6 mb-3">
         {/* Add a Link to the Home page */}
         <Link to="/" className="text-white font-montserrat font-semibold text-sm lg:text-lg tracking-wider mb-2">
           Home
@@ -259,6 +336,28 @@ function PdfDetails() {
         <h2 className="text-white font-montserrat font-semibold text-sm lg:text-lg tracking-wider mb-2">
           {selectedCategory}
         </h2>
+        </div>
+        <div class="justify-end mb-6">
+          <div class="flex items-center border rounded-md bg-white lg:px-4 lg:py-1 px-2 py-0.5 lg:mb-1 lg:mr-4  relative">
+            <FontAwesomeIcon icon={faSearch} className="text-gray-600 lg:w-4 lg:h-4 w-3 h-3" />
+            <input
+              id="search-input"
+              type="text"
+              placeholder={placeholders[currentPlaceholderIndex]}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="bg-transparent outline-none placeholder-gray-600 lg:pl-4 pl-2 lg:w-full w-36 text-sm lg:text-base"
+            />
+            {searchTerm && (
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="text-gray-600 cursor-pointer mr-1 lg:w-4 lg:h-4 w-3 h-3"
+                onClick={changeColor} // This clears the search term
+              />
+            )}
+          </div>
+        </div>
       </div>
       <p className="text-sm lg:text-lg font-semibold text-gray-300 mb-4 tracking-wider">
         Important Books and Study Materials
@@ -301,6 +400,7 @@ function PdfDetails() {
           </div>
         ))}
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -174,8 +174,23 @@ function TestSeries() {
 
   const handleCategoryClick2 = (categoryName) => {
     localStorage.setItem("selectedCategory3", categoryName);
-    if (selectedTab === "IMU-CET"){
+    if (selectedTab === "IMU-CET" && categoryName === "Physics"){
       window.open("https://rzp.io/l/u4D26sq", "_blank"); 
+      //navigate("/instructionspage");
+    }else if (selectedTab === "IMU-CET" && categoryName === "Chemistry"){
+      window.open("https://rzp.io/l/u4D26sq", "_blank"); 
+    }else if (selectedTab === "IMU-CET" && categoryName === "Mathematics"){
+      window.open("https://rzp.io/l/u4D26sq", "_blank"); 
+    }else if (selectedTab === "IMU-CET" && categoryName === "General English"){
+      window.open("https://rzp.io/l/u4D26sq", "_blank"); 
+    }else if (selectedTab === "IMU-CET" && categoryName === "General Aptitude"){
+      window.open("https://rzp.io/l/u4D26sq", "_blank"); 
+    }else if (selectedTab === "IMU-CET" && categoryName === "General Knowledge"){
+      window.open("https://rzp.io/l/u4D26sq", "_blank"); 
+    }else if (selectedTab === "IMU-CET" && categoryName === "PCM"){
+      window.open("https://payments.pabbly.com/subscribe/65fa83ea628ddf6d7e9c62af/PCM", "_blank"); 
+    }else if (selectedTab === "IMU-CET" && categoryName === "Final Mock"){
+      window.open("https://payments.pabbly.com/subscribe/65fa8463bf7cc96d66ba2bd2/FINAL-MOCK", "_blank"); 
     }
     else{
       navigate("/instructionspage");

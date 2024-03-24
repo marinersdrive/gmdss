@@ -50,7 +50,7 @@ function ResultPage() {
   }
 
   let totalQuestions = 30;
-  
+
   const currentDateTime = getCurrentDateTime();
   if (selectedCategory === "PCM"){
     totalQuestions = 90;
@@ -65,7 +65,14 @@ function ResultPage() {
   const totalQuestionsAppeared = parseInt(correctCount) + parseInt(incorrectCount);
   const passPercentage = 50;
   const isPass = (correctCount / totalQuestions) * 100 >= passPercentage;
+  let totalMarks = parseInt(correctCount)
 
+  if (selectedCategory === "Physics" || selectedCategory === "Chemistry" || selectedCategory === "Mathematics" || selectedCategory === "General English" || selectedCategory === "General Aptitude" || selectedCategory === "General Knowledge"){
+      totalMarks = parseInt(correctCount) - 0.25 * parseInt(incorrectCount)
+  }
+  else{
+    totalMarks = parseInt(correctCount)
+  }
 
   return (
     <div onCopy={(e) => e.preventDefault()} className="min-h-screen justify-center sm:px-8 px-6 pt-4 font-montserrat overflow-hidden sm:flex">
@@ -123,6 +130,10 @@ function ResultPage() {
               <tr>
                 <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-left">Total Questions Appeared</td>
                 <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-right">{totalQuestionsAppeared}</td>
+              </tr>
+              <tr>
+                <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-left">Total Marks</td>
+                <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-right">{totalMarks}</td>
               </tr>
               <tr>
                 <td className="py-2 px-4 text-sm sm:text-base border-b border-white font-semibold text-left">Correct Answers</td>
