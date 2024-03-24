@@ -9,11 +9,11 @@ import axios from "axios"; // Import axios for making HTTP requests
 import shuffleArray from "shuffle-array"; // Import the shuffle-array library
 import { BeatLoader } from "react-spinners";
 
+if (typeof window !== "undefined") {
+  injectStyle();
+}
 
 function TestPage() {
-
-  injectStyle();
-
   const navigate = useNavigate();
 
   const [selectedOption, setSelectedOption] = useState(null);

@@ -13,10 +13,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faBars, faTimes, faArrowLeft, faArrowRight, faFilePdf} from "@fortawesome/free-solid-svg-icons";
 import { push as Menu } from "react-burger-menu";
 
-function HomePage() {
-
+if (typeof window !== "undefined") {
   injectStyle();
+}
 
+function HomePage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

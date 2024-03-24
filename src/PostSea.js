@@ -6,10 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FaChevronRight } from "react-icons/fa";
 
-function PostSea() {
-  
+if (typeof window !== "undefined") {
   injectStyle();
+}
 
+function PostSea() {
   const newsItems = [
     {
       category: "Writtens Tab",

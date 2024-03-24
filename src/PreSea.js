@@ -6,10 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FaChevronRight } from "react-icons/fa";
 
-function PreSea() {
-  
+if (typeof window !== "undefined") {
   injectStyle();
+}
 
+function PreSea() {
   const newsItems = [
     {
       category: "IMU-CET",
