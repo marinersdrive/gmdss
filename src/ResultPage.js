@@ -183,11 +183,11 @@ function ResultPage() {
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', borderRadius: '50%', backgroundColor: 'white', width: '70%', height: '70%', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: isPass ? '#4CAF50' : '#FF6347', border: '1px solid #f0f0f0', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }} 
             className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
               {/* Percentage in bold */}
-              {`${Math.round((correctCount / totalQuestions) * 100)}%`}
+              {`${Math.round((totalMarks / totalQuestions) * 100)}%`}
             </div>
             {/* Circular progress bar */}
             <CircularProgressbar
-              value={(correctCount / totalQuestions) * 100}
+              value={(totalMarks / totalQuestions) * 100}
               text=""
               styles={buildStyles({
                 strokeLinecap: 'round',
