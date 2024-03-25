@@ -45,7 +45,7 @@ function OnBoardTraining() {
     },
     {
       category: "Others",
-      heading: "Record of Bridge Watchkeeping",
+      heading: "Record of Watchkeeping",
       url: "https://docs.google.com/document/d/1-ynmDjbpQCdJana5jY2iAH6nB_hAuNi0/edit?usp=drive_link&ouid=116219638247513269846&rtpof=true&sd=true"
     },
     {

@@ -277,7 +277,7 @@ function HomePage() {
           <nav>
             <a href="/" className="text-white font-montserrat font-medium mr-4">Home</a>
             <a href="/preseapage" className="text-white font-montserrat font-medium mr-4">Pre-Sea</a>
-            <a href="/trainingpage" className="text-white font-montserrat font-medium mr-4">On-board Training</a>
+            <a href="/trainingpage" className="text-white font-montserrat font-medium mr-4">On-Board Training</a>
             <a href="/postseapage" className="text-white font-montserrat font-medium mr-4">Post-Sea</a>
             <a href="/testseriespage" className="text-white font-montserrat font-medium">Test Series</a>
           </nav>
@@ -302,7 +302,7 @@ function HomePage() {
         <div className={`menu-container ${isMenuOpen ? 'open' : ''}` }>
           <div className="text-white font-medium font-montserrat px-4 py-6 text-center"><a href = "/">Home</a></div>
           <div className="text-white font-medium font-montserrat px-4 py-6 mb-5 text-center"><a href = "/preseapage">Pre-Sea</a></div>
-          <div className="text-white font-medium font-montserrat px-4 py-6 mb-5 text-center"><a href = "/trainingpage">On-board Training</a></div>
+          <div className="text-white font-medium font-montserrat px-4 py-6 mb-5 text-center"><a href = "/trainingpage">On-Board Training</a></div>
           <div className="text-white font-medium font-montserrat px-4 py-6 mb-5 text-center"><a href = "/postseapage">Post-Sea</a></div>
           <div className="text-white font-medium font-montserrat px-4 py-6 text-center"><a href = "/testseriespage">Test Series</a></div>
         </div>
@@ -437,8 +437,8 @@ function HomePage() {
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">as an</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-4 mb-2">Engineer Officer</h3>
         <br></br>
-        <p className="text-white font-montserrat font-normal text-sm lg:text-base text-justify ml-8 mr-8">Engineering graduates can embark on a career in the Merchant Navy by obtaining a degree in Marine Engineering or a related field such as Mechanical, Civil, or Electrical Engineering. With a minimum of 50% marks in their engineering degree, candidates then pursue a one-year Graduate Marine Engineer Course. This comprehensive program includes an 8-month classroom (pre-sea) training followed by a 4-month onboard training. Admission to this course typically involves clearing an entrance exam.
-          After completing the course, graduates become eligible to appear for the Certificate of Competency (CoC) exams. Upon successfully passing these exams, they can commence their journey in the Merchant Navy as Fourth Engineers. At Mariners Drive, we offer guidance throughout this process, ensuring a seamless journey into the Merchant Navy.</p>
+        <p className="text-white font-montserrat font-normal text-sm lg:text-base text-justify ml-8 mr-8">Engineering graduates can embark on a career in the Merchant Navy by obtaining a degree in Marine Engineering or a related field such as  Mechanical/Naval Architecture or Mechanical & Automation after attending a course of 4 years duration from a UGC recognized University and/or approved by AICTE. With a minimum of 50% marks in their engineering degree, candidates then pursue a one-year Graduate Marine Engineer Course. This comprehensive program includes an 8-month classroom (pre-sea) training followed by a 4-month onboard training. Admission to this course typically involves clearing an entrance exam.
+          After completing the course, graduates become eligible to appear for the Certificate of Competency (CoC) exams. Upon successfully passing these exams, they can commence their journey in the Merchant Navy as Fourth Engineers.</p>
         {/* Content for On-board Training Section */}
         {/* Add your content here */}
       </div>
