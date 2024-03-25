@@ -152,8 +152,8 @@ function HomePage() {
       url: "https://www.dgshipping.gov.in/writereaddata/ExamResult/202302030415286773897Noticetooralcandidates(2).pdf"
     },
     {
-      heading: "Details of IMU-CET Examination",
-      body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. ",
+      heading: "IMU-CET 2024",
+      body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
       url: "https://www.imu.edu.in/images/Admissions/2021/Notification_CET%20Details_03082021.pdf"
     }
   ];
@@ -332,7 +332,7 @@ function HomePage() {
         </div>
       </div>
       {/* Thick Page Divider */}
-      <div className="my-8 lg:my-20 text-center">
+      <div className="my-12 lg:my-20 text-center">
       <p className="text-darkest-blue font-montserrat bg-light-blue lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center  tracking-wider">
         Mariner's Drive
       </p>
@@ -355,11 +355,11 @@ function HomePage() {
     </div>
       {/* Thick Page Divider */}
       <div className="lg:my-4 my-0 text-center">
-      <p className="text-darkest-blue font-montserrat lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center tracking-wider">
+      <p className="text-tp-darkest-blue font-montserrat lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center tracking-wider">
       </p>
     </div>
     {/* News Bulletin Section */}
-    <div class="mx-12 lg:p-0 p-4 lg:mx-24 lg:h-full rounded-2xl bg-blue-900  animate-[wiggle_1s_ease-in-out_infinite]">
+    <div class="mx-12 lg:p-0 p-4 lg:mx-24 lg:h-full rounded-2xl bg-tp-darkest-blue  animate-[wiggle_1s_ease-in-out_infinite]">
     {Object.keys(prodDetails)
       .slice(currentDetailsIndex, currentDetailsIndex + 1)
       .map((key, index) => {
@@ -367,9 +367,9 @@ function HomePage() {
         return (
           <div key={key} class="lg:flex w-full justify-between items-center rounded-lg">
           <div class="items-center ml-4 lg:my-4">
-          <h2 className="lg:m-6 mt-4 text-white lg:text-3xl text-base tracking-wider lg:font-semibold font-medium">Practice Makes Perfect: Master your exams</h2>
-          <p className="lg:m-6 mt-4 text-white lg:text-2xl text-base bg-red rounded-lg p-2 w-1/2 text-center">Limited Time Offer!</p>
-          <h2 className="hidden lg:block lg:mx-6 mt-3 text-white lg:text-2xl text-base tracking-wider">{details.category}</h2>
+          <h2 className="lg:m-6 mt-4 text-white lg:text-2xl text-base tracking-wider lg:font-semibold font-medium font-montserrat">Practice Makes Perfect: Master your exams</h2>
+          <p className="lg:m-6 mt-4 text-white lg:text-lg text-base bg-red rounded-lg p-2 w-1/2 text-center font-montserrat">Limited Time Offer!</p>
+          <h2 className="hidden lg:block lg:mx-6 mt-3 text-white lg:text-2xl text-base tracking-wider font-montserrat">{details.category}</h2>
           <button className="hidden lg:block shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset] 
           font-montserrat text-white tracking-wide font-semibold border-2 bg-darkest-blue py-2 lg:px-12 px-8 lg:text-base text-sm rounded lg:m-6 mt-4" 
           onClick={() => navigate('/testseriespage')}>Start Now!</button>
@@ -394,7 +394,7 @@ function HomePage() {
       </div>
     )}
             </div>
-            <h2 className="lg:hidden lg:mx-6 my-4 text-white lg:text-2xl text-base tracking-wider">{details.category}</h2>
+            <h2 className="lg:hidden lg:mx-6 my-4 text-white lg:text-2xl text-base tracking-wider font-montserrat">{details.category}</h2>
             <button className="lg:hidden shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset] 
           font-montserrat text-white tracking-wide font-semibold border-2 bg-darkest-blue py-2 lg:px-12 px-7 lg:text-base text-sm rounded lg:m-6" 
           onClick={() => navigate('/testseriespage')}>Start Now!</button>
@@ -579,7 +579,7 @@ function HomePage() {
     </div>
  
   {/* Sponsorship Section */}
-<div className="lg:flex justify-between mx-4 lg:mx-12 h-full">
+<div className="lg:flex justify-between mx-0 lg:mx-12 h-full">
   {/* Pre-Sea Section */}
   <div className="w-full text-center">
     <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-12 mb-8">Sponsorship</h3>
@@ -601,7 +601,7 @@ function HomePage() {
     </div>
 
   {/* 'Writtens' and 'Oral' Tabs Section */}
-<div className="lg:flex justify-between mx-4 lg:mx-12 h-full">
+<div className="lg:flex justify-between mx-0 lg:mx-12 h-full">
   {/* 'Writtens' Tab Section */}
   <div className="w-full lg:w-1/2 text-center">
     <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Your Guide to</h3>
@@ -640,7 +640,7 @@ function HomePage() {
         Test - Series
       </p>
     </div>
-  <div className="lg:flex justify-between mx-4 lg:mx-12 h-full  ">
+  <div className="lg:flex justify-between mx-0 lg:mx-12 h-full  ">
       {/* Pre-Sea Section */}
       <div className="w-full lg:w-1/3 text-center lg:mt-4 mt-12">
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">IMUCET</h3>
@@ -697,7 +697,7 @@ function HomePage() {
       </p>
     </div>
     
-    <div className="lg:flex justify-between mx-4 lg:mx-16 h-full">
+    <div className="lg:flex justify-between mx-0 lg:mx-16 h-full">
     {/* Left Part - Contact Form */}
     <div className="w-full lg:w-1/2">
       <h3 className="text-white font-montserrat lg:text-start text-center font-semibold text-lg lg:text-2xl tracking-wider mb-8">Get in Touch!</h3>
