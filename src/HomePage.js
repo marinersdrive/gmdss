@@ -154,7 +154,7 @@ function HomePage() {
     {
       heading: "IMU-CET 2024",
       body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
-      url: "https://www.imu.edu.in/images/Admissions/2021/Notification_CET%20Details_03082021.pdf"
+      url: "https://drive.google.com/file/d/1RFFFq0_24rC5h8OzcZL86LB-yrVsn4v6/view?usp=drive_link"
     }
   ];
 

@@ -213,16 +213,16 @@ function OnBoardTraining() {
   {selectedCategoryItems.map((news, index) => (
     <div key={index} className="text-center">
       <a href={news.url} target="_blank" rel="noopener noreferrer">
-      <div className="rounded-lg lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden sm:h-56 h-48 flex flex-col cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
-        <div className="bg-gray-300 sm:h-20 h-14 flex items-center p-4">
-          <FontAwesomeIcon className="h-8 w-8" icon={faFilePdf} style={{ color: "#fa0f00" }} />
+      <div className="rounded-lg lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden lg:h-56 h-48 flex flex-col cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+        <div className="bg-gray-300 lg:h-20 h-14 flex items-center p-4">
+          <FontAwesomeIcon className="lg:h-8 lg:w-8 w-6 h-6" icon={faFilePdf} style={{ color: "#fa0f00" }} />
           <div className="ml-4">
             <p className="text-black font-montserrat font-semibold text-justify text-sm tracking-wide">
               {news.heading}
             </p>
           </div>
         </div>
-        <div className="bg-white sm:h-56 h-48 p-4 flex items-start">
+        <div className="bg-white lg:h-56 h-48 p-5 flex items-start">
           <p className="text-black text-sm font-montserrat items-center text-justify leading-6 font-medium">
           Click here to get detailed information about {news.heading} and the latest updates essential for your On-Board training. Prepare thoroughly with our resources for a successful outcome.
 
