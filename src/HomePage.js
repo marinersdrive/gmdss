@@ -209,20 +209,20 @@ function HomePage() {
     {
       id: 1, 
       category: "IMU-CET (Category- Wise)",
-      mrp: 99,
-      sp: 49
+      mrp: 49,
+      sp: 29
     },
     {
       id: 2, 
       category: "IMU-CET (PCM)",
-      mrp: 149,
-      sp: 119
+      mrp: 79,
+      sp: 59
     },
     {
       id: 3, 
       category: "IMU-CET (Final Mock)",
-      mrp: 199,
-      sp: 149
+      mrp: 99,
+      sp: 79
     },
     {
       id: 4,

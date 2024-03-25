@@ -218,11 +218,11 @@ function TestSeries() {
   const getPrice = (newsItems) => {
     switch (newsItems.id) {
       case 7: // PCM
-        return { mrp: 119, sp: 149 };
+        return { mrp: 59, sp: 79 };
       case 8: // Final Mock
-        return { mrp: 149, sp: 199 };
+        return { mrp: 79, sp: 99 };
       default:
-        return { mrp: 49, sp: 99 };
+        return { mrp: 29, sp: 49 };
     }
   };
 
