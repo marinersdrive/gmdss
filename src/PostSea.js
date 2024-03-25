@@ -236,7 +236,7 @@ function PostSea() {
                   </p>
                 </div>
               </div>
-              <div className="bg-white lg:h-56 h-48 p-5 flex items-start">
+              <div className="bg-white lg:h-56 h-48 p-4 flex items-center">
                 <p className="text-black text-sm font-montserrat text-justify leading-6 font-medium">
                   Click here to get detailed information about {news.heading} and
                   the latest updates essential for your Post-Sea training. Prepare
