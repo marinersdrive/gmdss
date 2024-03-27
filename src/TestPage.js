@@ -24,7 +24,17 @@ function TestPage() {
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [currentSubCategory, setCurrentSubCategory] = useState("");
   const [loading, setLoading] = useState(true);
-  
+  const [imu, setIsIMU] = useState(1);
+
+
+  const firstName = localStorage.getItem("firstName");
+  const lastName = localStorage.getItem("lastName");
+  const indosNumber = localStorage.getItem("indosNumber");
+  const email = localStorage.getItem("email");
+
+  let correctCountFinal = "";
+  let incorrectCountFinal = "";
+  let totalMarks = ""
 
   let correct = 0;
   let incorrect = 0;
@@ -92,58 +102,72 @@ function TestPage() {
         else if (selectedCategory === "EFA / Refresher") {
           cat = "Elementary First Aid - EFA / Refresher"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "AFF / Refresher") {
           cat = "Advanced Fire Fighting - AFF / Refresher"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "STSDSD") {
           cat = "STSDSD - Security Training for Seafarers"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "FPFF / Refresher") {
           cat = "Fire Prevention & Fire Fighting - FPFF / Refresher"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "PST / Refresher") {
           cat = "Personal Survival Techniques - PST / Refresher"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "PSSR") {
           cat = "Personal Safety & Social Responsibility - PSSR"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "TASCO") {
           cat = "TASCO"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "CHEMCO") {
           cat = "CHEMCO"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "GASCO") {
           cat = "GASCO"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "OCTF / OCTCO") {
           cat = "OCTF / OCTCO"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "Medicare / Refresher") {
           cat = "MEDICARE / Refresher"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "PSCRB") {
           cat = "PSCRB"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "MFA / Refresher") {
           cat = "Medical First Aid - MFA / Refresher"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else if (selectedCategory === "PSF") {
           cat = "Passenger Ship Familiarization - PSF"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
+          setIsIMU(0);
         } 
         else {
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === selectedCategory).slice(0, 30));
@@ -314,7 +338,7 @@ function TestPage() {
     
   };
 
-  const handleFinish1 = () => {
+  const handleFinish1 = async () => {
     if (selectedOption === null) {
       toast.error("Please choose an option to proceed.", {
         position: "top-center",
@@ -340,10 +364,35 @@ function TestPage() {
     });
     handleCorrectCount(correctCount + correct);
     handleIncorrectCount(incorrectCount + incorrect);
+
+    correctCountFinal = correctCount + correct;
+    incorrectCountFinal = incorrectCount + incorrect;
+
+    if(imu === 1){
+        totalMarks = correctCountFinal - 0.25*(incorrectCountFinal)
+    }else{
+      totalMarks = correctCountFinal;
+    }
+    await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/storeUserData`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        indosNumber,
+        selectedCategory,
+        correctCountFinal,
+        incorrectCountFinal,
+        totalMarks
+      }),
+    });
   }
   };
 
-  const handleFinish2 = () => {
+  const handleFinish2 = async () => {
     if (selectedOption === null) {
       handleCorrectCount(correctCount + correct);
       handleIncorrectCount(incorrectCount + incorrect);
@@ -360,6 +409,30 @@ function TestPage() {
     }
     handleCorrectCount(correctCount + correct);
     handleIncorrectCount(incorrectCount + incorrect);
+    correctCountFinal = correctCount + correct;
+    incorrectCountFinal = incorrectCount + incorrect;
+
+    if(imu === 1){
+        totalMarks = correctCountFinal - 0.25*(incorrectCountFinal)
+    }else{
+      totalMarks = correctCountFinal;
+    }
+    await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/storeUserData`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        indosNumber,
+        selectedCategory,
+        correctCountFinal,
+        incorrectCountFinal,
+        totalMarks
+      }),
+    });
     navigate("/ResultPage");
   }
   };
@@ -368,8 +441,26 @@ function TestPage() {
     toast.dismiss();
     navigate("/testseriespage");
   }
-  const navigateToNextPage = () => {
+
+  
+  const navigateToNextPage = async () => {
     toast.dismiss();
+    await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/storeUserData`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        indosNumber,
+        selectedCategory,
+        correctCountFinal,
+        incorrectCountFinal,
+        totalMarks
+      }),
+    });
     navigate("/ResultPage"); // Replace with the URL of the next page
   };
 
@@ -465,23 +556,59 @@ function TestPage() {
               
                 </div>
                 
+                
+                {imu === 0 ? (
                 <ul className="space-y-6 mt-10">
                   {currentQuestion.options.map((option, optionIndex) => (
-                  <div key={optionIndex} className="flex items-center space-x-2 text-sm sm:text-base">
-                  <div className="text-black text-sm sm:text-base"><b>{String.fromCharCode(65 + optionIndex)}.</b></div>
-                  <input
-                    type="radio"
-                    name="option"
-                    id={`option${optionIndex}`}
-                    checked={selectedOption === optionIndex}
-                    onChange={() => handleOptionSelect(optionIndex)}
-                  />
-                  <label htmlFor={`option${optionIndex}`}>
-                    {option}
-                  </label>
-                </div>
-                ))}
+                    <div
+                      key={optionIndex}
+                      className={`flex items-center space-x-2 text-sm sm:text-base ${
+                        selectedOption !== null &&
+                        optionIndex === currentQuestion.correctOption
+                          ? "text-green font-medium" // Correct answer turns green
+                          : selectedOption === optionIndex
+                          ? "text-red font-medium" // Incorrect answer turns red
+                          : "text-black" // Default color for options
+                      }`}
+                    >
+                      <div className="text-black text-sm sm:text-base">
+                        <b>{String.fromCharCode(65 + optionIndex)}.</b>
+                      </div>
+                      <input
+                        type="radio"
+                        name="option"
+                        id={`option${optionIndex}`}
+                        checked={selectedOption === optionIndex}
+                        onChange={() => handleOptionSelect(optionIndex)}
+                      />
+                      <label htmlFor={`option${optionIndex}`}>{option}</label>
+                    </div>
+                  ))}
                 </ul>
+              ) : (
+                <ul className="space-y-6 mt-10">
+                  {currentQuestion.options.map((option, optionIndex) => (
+                    <div
+                      key={optionIndex}
+                      className={`flex items-center space-x-2 text-sm sm:text-base text-black`}
+                    >
+                      <div className="text-black text-sm sm:text-base">
+                        <b>{String.fromCharCode(65 + optionIndex)}.</b>
+                      </div>
+                      <input
+                        type="radio"
+                        name="option"
+                        id={`option${optionIndex}`}
+                        checked={selectedOption === optionIndex}
+                        onChange={() => handleOptionSelect(optionIndex)}
+                      />
+                      <label htmlFor={`option${optionIndex}`}>{option}</label>
+                    </div>
+                  ))}
+                </ul>
+              )}
+                
+
               </div>
               </div>)}
 

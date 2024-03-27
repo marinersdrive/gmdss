@@ -175,8 +175,8 @@ function TestSeries() {
   const handleCategoryClick2 = (categoryName) => {
     localStorage.setItem("selectedCategory3", categoryName);
     if (selectedTab === "IMU-CET" && categoryName === "Physics"){
-      window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
-      //navigate("/instructionspage");
+      //window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
+      navigate("/instructionspage");
     }else if (selectedTab === "IMU-CET" && categoryName === "Chemistry"){
       window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
     }else if (selectedTab === "IMU-CET" && categoryName === "Mathematics"){
@@ -270,7 +270,7 @@ function TestSeries() {
       <div className="absolute top-0 right-0 mt-2 mr-2 flex animate-pulse">
       {selectedTab === "IMU-CET"? (
       <>
-      <div className="text-white font-medium px-2 py-1 bg-blue-900 rounded-l-lg border-r-2 border-white font-montserrat ">
+      <div className="text-white font-medium px-2 py-1 bg-blue-900 rounded-l-lg border-r-2 border-white font-montserrat">
         ₹ {getPrice(category).mrp}
       </div>
       <div className="text-white font-medium px-2 py-1 bg-blue-900  rounded-r-lg relative">

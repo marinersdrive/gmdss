@@ -76,18 +76,19 @@ document.body.classList.add('instructions-page');
       setIsLoading(true);
 
       // Make a POST request to store user data
-      await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/storeUserData`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          indosNumber,
-        }),
-      });
+      // await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/storeUserData`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     firstName,
+      //     lastName,
+      //     email,
+      //     indosNumber,
+      //     selectedCategory
+      //   }),
+      // });
       // Wait for 5 seconds
       await new Promise(resolve => setTimeout(resolve, 5000));
       // Navigate to the next page
@@ -142,9 +143,9 @@ document.body.classList.add('instructions-page');
   const negativeMarking = (ct) => {
     switch (ct){
       case "IMU-CET":
-        return {negative: '-0.25'};
+        return {negative: '-0.25', indos: "Phone"};
       default:
-        return {negative: 'no'}
+        return {negative: 'no', indos: "Indos"}
     }
   }
   console.log(process.env.REACT_APP_SERVER_BASE_URL)
@@ -225,7 +226,7 @@ document.body.classList.add('instructions-page');
             <p className="text-red text-sm mt-1 font-medium">Please enter a valid email address!</p>
           )}
           <label htmlFor="indosNumber" className="block mt-3 text-blue-900 font-semibold text-sm sm:text-base">
-            Enter your Indos Number: <span className="text-red">*</span>
+            Enter your {negativeMarking(ct).indos} Number: <span className="text-red">*</span>
           </label>
           <input
             type="text"
