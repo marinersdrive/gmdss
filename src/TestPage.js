@@ -338,7 +338,7 @@ function TestPage() {
     
   };
 
-  const handleFinish1 = async () => {
+  const handleFinish1 = () => {
     if (selectedOption === null) {
       toast.error("Please choose an option to proceed.", {
         position: "top-center",
@@ -367,28 +367,6 @@ function TestPage() {
 
     correctCountFinal = correctCount + correct;
     incorrectCountFinal = incorrectCount + incorrect;
-
-    if(imu === 1){
-        totalMarks = correctCountFinal - 0.25*(incorrectCountFinal)
-    }else{
-      totalMarks = correctCountFinal;
-    }
-    await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/storeUserData`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        indosNumber,
-        selectedCategory,
-        correctCountFinal,
-        incorrectCountFinal,
-        totalMarks
-      }),
-    });
   }
   };
 
