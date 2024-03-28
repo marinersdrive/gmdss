@@ -175,8 +175,8 @@ function TestSeries() {
   const handleCategoryClick2 = (categoryName) => {
     localStorage.setItem("selectedCategory3", categoryName);
     if (selectedTab === "IMU-CET" && categoryName === "Physics"){
-      //window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
-      navigate("/instructionspage");
+      window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
+      //navigate("/instructionspage");
     }else if (selectedTab === "IMU-CET" && categoryName === "Chemistry"){
       window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
     }else if (selectedTab === "IMU-CET" && categoryName === "Mathematics"){
