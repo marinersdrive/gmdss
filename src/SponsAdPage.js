@@ -53,7 +53,7 @@ function SponAdPage() {
           className="w-22 h-16 lg:w-28 lg:h-20"
         />
     </div>
-    <h2 className="text-xl sm:text-2xl font-bold mt-4 text-darkest-blue font-montserrat tracking-wide">Mariner's Drive X Nautical Knights</h2>
+    <h2 className="text-base lg:text-2xl font-bold mt-4 text-darkest-blue font-montserrat tracking-wide">Mariner's Drive X Nautical Knights</h2>
 
     <p className="lg:text-base text-sm font-medium mt-6 text-darkest-blue font-montserrat tracking-wide">Embark on an extraordinary journey and explore the boundless possibilities that arise from the collaboration between Mariner's Drive and Nautical Knights. Dive into a world where innovation meets tradition, where the seas of creativity converge with the winds of expertise.</p>
     <p className="lg:text-lg text-sm font-medium mt-4 text-darkest-blue font-montserrat tracking-wide">Follow us on social media:</p>
