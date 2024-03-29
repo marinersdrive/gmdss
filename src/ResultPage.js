@@ -58,6 +58,9 @@ function ResultPage() {
   else if (selectedCategory === "Final Mock") {
     totalQuestions = 200;
   }
+  else if (selectedCategory === "Sponsorship Exam") {
+    totalQuestions = 70;
+  }
   else{
     totalQuestions = 30;
   }
@@ -67,7 +70,7 @@ function ResultPage() {
   const isPass = (correctCount / totalQuestions) * 100 >= passPercentage;
   let totalMarks = parseInt(correctCount)
 
-  if (selectedCategory === "Physics" || selectedCategory === "Chemistry" || selectedCategory === "Mathematics" || selectedCategory === "General English" || selectedCategory === "General Aptitude" || selectedCategory === "General Knowledge" || selectedCategory === "General Knowledge" || selectedCategory === "PCM" || selectedCategory === "Final Mock"){
+  if (selectedCategory === "Physics" || selectedCategory === "Chemistry" || selectedCategory === "Mathematics" || selectedCategory === "General English" || selectedCategory === "General Aptitude" || selectedCategory === "General Knowledge" || selectedCategory === "General Knowledge" || selectedCategory === "PCM" || selectedCategory === "Final Mock" || selectedCategory === "Sponsorship Exam"){
       totalMarks = parseInt(correctCount) - 0.25 * parseInt(incorrectCount)
   }
   else{

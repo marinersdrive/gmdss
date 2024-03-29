@@ -134,6 +134,8 @@ document.body.classList.add('instructions-page');
       case "Final Mock":
         // Final Mock
         return { questions: 200, minutes: 180, marks: 200 };
+      case "Sponsorship Exam":
+        return { questions: 70, minutes: 70, marks: 70 };
       default:
         // Default case for other categories
         return { questions: 30, minutes: 30, marks: 30 };
@@ -143,6 +145,8 @@ document.body.classList.add('instructions-page');
   const negativeMarking = (ct) => {
     switch (ct){
       case "IMU-CET":
+        return {negative: '-0.25', indos: "Phone"};
+      case "Sponsorship":
         return {negative: '-0.25', indos: "Phone"};
       default:
         return {negative: 'no', indos: "Indos"}

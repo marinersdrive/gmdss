@@ -34,7 +34,7 @@ function TestPage() {
 
   let correctCountFinal = "";
   let incorrectCountFinal = "";
-  let totalMarks = ""
+  let totalMarks = 0
 
   let correct = 0;
   let incorrect = 0;
@@ -66,6 +66,8 @@ function TestPage() {
     intValue = 1
   }else if(ct === "DG Exit Exam"){
     intValue = 2
+  }else if(ct === "Sponsorship"){
+    intValue = 4
   }
   else{
     intValue = 3
@@ -78,7 +80,7 @@ function TestPage() {
       .then(response => {
         // Filter questions by selectedCategory
         let filteredQuestions;
-        let timeInSeconds = 30 * 60;
+        let timeInSeconds = 30;
         let subCategory = "";
         let cat = ""
 
@@ -168,7 +170,10 @@ function TestPage() {
           cat = "Passenger Ship Familiarization - PSF"
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === cat).slice(0, 30));
           setIsIMU(0);
-        } 
+        }else if (selectedCategory === "Sponsorship Exam"){
+          cat = "Sponsorship"
+          filteredQuestions = response.data.filter(question => question.category === cat);
+        }
         else {
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === selectedCategory).slice(0, 30));
         }
@@ -338,7 +343,7 @@ function TestPage() {
     
   };
 
-  const handleFinish1 = async () => {
+  const handleFinish1 = () => {
     if (selectedOption === null) {
       toast.error("Please choose an option to proceed.", {
         position: "top-center",
@@ -373,22 +378,22 @@ function TestPage() {
     }else{
       totalMarks = correctCountFinal;
     }
-    await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/storeUserData`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        indosNumber,
-        selectedCategory,
-        correctCountFinal,
-        incorrectCountFinal,
-        totalMarks
-      }),
-    });
+    // await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}api/storeUserData`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     firstName,
+    //     lastName,
+    //     email,
+    //     indosNumber,
+    //     selectedCategory,
+    //     correctCountFinal,
+    //     incorrectCountFinal,
+    //     totalMarks
+    //   }),
+    // });
   }
   };
 
@@ -396,7 +401,11 @@ function TestPage() {
     if (selectedOption === null) {
       handleCorrectCount(correctCount + correct);
       handleIncorrectCount(incorrectCount + incorrect);
+      if(selectedCategory === "Sponsorship Exam"){
+        navigate("/SponsAdPage")
+      }else{
       navigate("/ResultPage");
+      }
     }else{
     if (selectedOption === currentQuestion.correctOption) {
       correct = correct + 1;
@@ -461,7 +470,11 @@ function TestPage() {
         totalMarks
       }),
     });
-    navigate("/ResultPage"); // Replace with the URL of the next page
+    if(selectedCategory === "Sponsorship"){
+      navigate("/SponsAdPage");
+    }else{
+    navigate("/ResultPage");
+    } // Replace with the URL of the next page
   };
 
   const dismissPage = () => {

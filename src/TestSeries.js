@@ -153,9 +153,15 @@ function TestSeries() {
       heading: "GMDSS",
       sub_heading: "GMDSS"
     },
+    {
+      id: 9,
+      category: "Sponsorship",
+      heading: "Sponsorship Exam",
+      sub_heading: "Sponsorship Exam"
+    },
   ];
 
-  const categories = ["IMU-CET", "DG Exit Exam", "GMDSS"];
+  const categories = ["IMU-CET", "Sponsorship", "DG Exit Exam", "GMDSS"];
 
   const navigate = useNavigate();
   const defaultCategory = "IMU-CET"
@@ -175,8 +181,8 @@ function TestSeries() {
   const handleCategoryClick2 = (categoryName) => {
     localStorage.setItem("selectedCategory3", categoryName);
     if (selectedTab === "IMU-CET" && categoryName === "Physics"){
-      //window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
-      navigate("/instructionspage");
+      window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
+      //navigate("/instructionspage");
     }else if (selectedTab === "IMU-CET" && categoryName === "Chemistry"){
       window.open("https://payments.pabbly.com/subscribe/65f4ab861a5a74ac97817bd5/category---wise", "_blank"); 
     }else if (selectedTab === "IMU-CET" && categoryName === "Mathematics"){
@@ -192,6 +198,9 @@ function TestSeries() {
       //navigate("/instructionspage");
     }else if (selectedTab === "IMU-CET" && categoryName === "Final Mock"){
       window.open("https://payments.pabbly.com/subscribe/65fa8463bf7cc96d66ba2bd2/FINAL-MOCK", "_blank"); 
+      //navigate("/instructionspage");
+    }else if(selectedTab === "Sponsorship"){
+      window.open("https://payments.pabbly.com/subscribe/660662c6d85315db60b88a48/sponsorship-exam", "_blank"); 
       //navigate("/instructionspage");
     }
     else{
@@ -210,6 +219,8 @@ function TestSeries() {
         return { questions: 90, minutes: 90, marks: 90 };
       case 8: // Final Mock
         return { questions: 200, minutes: 180, marks: 200 };
+      case 9: // Sponsorship
+        return { questions: 70, minutes: 70, marks: 70 };
       default:
         return { questions: 30, minutes: 30, marks: 30 };
     }
@@ -218,11 +229,13 @@ function TestSeries() {
   const getPrice = (newsItems) => {
     switch (newsItems.id) {
       case 7: // PCM
-        return { mrp: 59, sp: 79 };
+        return { mrp: 79, sp: 59 };
       case 8: // Final Mock
-        return { mrp: 79, sp: 99 };
+        return { mrp: 99, sp: 79 };
+      case 9: // Sponsorship
+        return { mrp: 180, sp: 140 };
       default:
-        return { mrp: 29, sp: 49 };
+        return { mrp: 49, sp: 29 };
     }
   };
 
@@ -268,13 +281,13 @@ function TestSeries() {
       className="relative border border-gray-300 mb-2 lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] rounded-lg overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105"
     >
       <div className="absolute top-0 right-0 mt-2 mr-2 flex animate-pulse">
-      {selectedTab === "IMU-CET"? (
+      {selectedTab === "IMU-CET" || selectedTab === "Sponsorship"? (
       <>
       <div className="text-white font-medium px-2 py-1 bg-blue-900 rounded-l-lg border-r-2 border-white font-montserrat">
-        ₹ {getPrice(category).mrp}
+        ₹ {getPrice(category).sp}
       </div>
       <div className="text-white font-medium px-2 py-1 bg-blue-900  rounded-r-lg relative">
-        <span className="font-montserrat">₹ {getPrice(category).sp}</span>
+        <span className="font-montserrat">₹ {getPrice(category).mrp}</span>
         <span className="cross absolute top-0 right-0 w-full h-full overflow-hidden">
           <span className="line absolute top-1/2 right-0 w-full h-0.5 bg-red transform -translate-y-1/2 rotate-45"></span>
         </span>

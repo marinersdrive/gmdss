@@ -155,6 +155,11 @@ function HomePage() {
       heading: "IMU-CET 2024",
       body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
       url: "https://drive.google.com/file/d/1RFFFq0_24rC5h8OzcZL86LB-yrVsn4v6/view?usp=drive_link"
+    },
+    {
+      heading: "DLP April 2024 Exam Time Table",
+      body: "This document contains the exam time table for the DLP for April 2024. It outlines the schedule for various exams taking place during this period, providing important information for students enrolled in the program.",
+      url: "https://www.imu.edu.in/imunew//uploads/files/exams/timetable/DLP%20Time%20Table_April2024.pdf"
     }
   ];
 
@@ -225,13 +230,19 @@ function HomePage() {
       sp: 79
     },
     {
-      id: 4,
+      id: 4, 
+      category: "Sponsorship Exam",
+      mrp: 180,
+      sp: 140
+    },
+    {
+      id: 5,
       category: "DG Exit Exam",
       mrp: 100,
       sp: 99
     },
     {
-      id: 5,
+      id: 6,
       category: "GMDSS",
       mrp: 200,
       sp: 150
@@ -376,7 +387,7 @@ function HomePage() {
           </div>
           <div class="mr-8 lg-0 lg:my-0 m-4 mt-6">
             <div className="flex animate-pulse items-start">
-            {details.id !== 4 && details.id !== 5? (
+            {details.id !== 5 && details.id !== 6? (
               <>
             <div className="text-white border-y-2 border-l-2 font-medium lg:px-6 lg:py-3 px-4 py-1 bg-darkest-blue rounded-l-lg border-r-2 border-white font-montserrat lg:text-2xl text-base">
               ₹ {details.sp}
@@ -396,7 +407,7 @@ function HomePage() {
             </div>
             <h2 className="lg:hidden lg:mx-6 my-4 text-white lg:text-2xl text-base tracking-wider font-montserrat">{details.category}</h2>
             <button className="lg:hidden shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset] 
-          font-montserrat text-white tracking-wide font-semibold border-2 bg-darkest-blue py-2 lg:px-12 px-7 lg:text-base text-sm rounded lg:m-6" 
+          font-montserrat text-white tracking-wide font-semibold border-2 bg-darkest-blue py-2 lg:px-12 px-4 lg:text-base text-sm rounded lg:m-6" 
           onClick={() => navigate('/testseriespage')}>Start Now!</button>
           </div>
       </div>
@@ -415,7 +426,6 @@ function HomePage() {
     <div className="lg:flex justify-between mx-4 lg:mx-12 h-full">
       {/* Pre-Sea Section */}
       <div className="w-full lg:w-1/3 text-center lg:mt-4 mt-12">
-        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Method 1:</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Joining the Merchant Navy</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">as a</h3> 
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-4 mb-2">Deck Officer</h3>
@@ -432,7 +442,6 @@ function HomePage() {
       </div>
       {/* On-board Training Section */}
       <div className="w-full lg:w-1/3 text-center lg:mt-4 mt-12">
-        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Method 2:</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Joining the Merchant Navy</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">as an</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-4 mb-2">Engineer Officer</h3>
@@ -448,7 +457,6 @@ function HomePage() {
 
       {/* Post-Sea Section */}
       <div className="w-full lg:w-1/3 text-center lg:mt-4 mt-12">
-        <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Method 3:</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">Joining the Merchant Navy</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider mb-4">as a</h3>
         <h3 className="text-white font-montserrat font-semibold text-base lg:text-2xl tracking-wider lg:mb-4 mb-2">Rating (Crew)</h3>
