@@ -173,6 +173,7 @@ function TestPage() {
         }else if (selectedCategory === "Sponsorship Exam"){
           cat = "Sponsorship"
           filteredQuestions = response.data.filter(question => question.category === cat);
+          timeInSeconds = 70 * 60;
         }
         else {
           filteredQuestions = shuffleArray(response.data.filter(question => question.category === selectedCategory).slice(0, 30));
