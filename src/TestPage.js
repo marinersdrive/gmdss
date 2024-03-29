@@ -442,7 +442,11 @@ function TestPage() {
         totalMarks
       }),
     });
-    //navigate("/ResultPage");
+    if(selectedCategory === "Sponsorship Exam"){
+      navigate("/SponsAdPage")
+    }else{
+    navigate("/ResultPage");
+    }
   }
   };
 
