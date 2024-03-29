@@ -80,7 +80,7 @@ function TestPage() {
       .then(response => {
         // Filter questions by selectedCategory
         let filteredQuestions;
-        let timeInSeconds = 30;
+        let timeInSeconds = 30 * 60;
         let subCategory = "";
         let cat = ""
 
@@ -442,7 +442,7 @@ function TestPage() {
         totalMarks
       }),
     });
-    navigate("/ResultPage");
+    //navigate("/ResultPage");
   }
   };
 
