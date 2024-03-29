@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Logo from "./assets/bg2.png";
-import SponsLogo from "./assets/sponsLogo.jpeg";
+import SponsLogo from "./assets/sponsLogo.png";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
