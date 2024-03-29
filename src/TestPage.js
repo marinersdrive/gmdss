@@ -372,7 +372,6 @@ function TestPage() {
 
     correctCountFinal = correctCount + correct;
     incorrectCountFinal = incorrectCount + incorrect;
-<<<<<<< HEAD
 
     if(imu === 1){
         totalMarks = correctCountFinal - 0.25*(incorrectCountFinal)
@@ -395,8 +394,6 @@ function TestPage() {
     //     totalMarks
     //   }),
     // });
-=======
->>>>>>> 72ceff042ddd68bff126ea0e7265aafcc9c82452
   }
   };
 
