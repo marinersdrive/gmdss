@@ -474,7 +474,7 @@ function TestPage() {
         totalMarks
       }),
     });
-    if(selectedCategory === "Sponsorship"){
+    if(selectedCategory === "Sponsorship Exam"){
       navigate("/SponsAdPage");
     }else{
     navigate("/ResultPage");
