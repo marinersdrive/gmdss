@@ -1232,7 +1232,7 @@ function PdfDetails() {
                   </p>
                 </div>
               </div>
-              <div className="bg-white lg:h-56 h-48 lg:p-4 px-4 py-2 flex items-start">
+              <div className="bg-white lg:h-56 h-48 lg:px-4 lg:py-2 px-4 py-2 flex items-start">
                 <p className="text-black text-sm font-montserrat text-justify leading-6 font-medium">
                   Click here to get detailed information about {news.heading} and
                   the latest updates essential for your Post-Sea training. Prepare
