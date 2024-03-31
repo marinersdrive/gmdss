@@ -369,7 +369,7 @@ function PdfDetails() {
           <div key={index} className="text-center">
             <a href={news.url} target="_blank" rel="noopener noreferrer">
             <div
-              className="rounded-lg lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden sm:h-56 h-48 flex flex-col cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
+              className="rounded-lg lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden lg:h-56 h-48 flex flex-col cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
               onClick={() => {
                 if (news.category !== 'BWKE' && news.category !== 'Cargo' && news.category !== 'Meteorology' && news.category !== 'Signals Visuals' && news.category !== "Signals Oral") {
                   handlePdfClick(news.heading);

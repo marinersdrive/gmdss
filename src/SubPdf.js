@@ -1223,7 +1223,7 @@ function PdfDetails() {
         {selectedCategoryItems.map((news, index) => (
           <div key={index} className="text-center">
             <a href={news.url} target="_blank" rel="noopener noreferrer">
-            <div className="rounded-lg lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden sm:h-56 h-48 flex flex-col cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+            <div className="rounded-lg lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden lg:h-56 h-48 flex flex-col cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
               <div className="bg-gray-300 sm:h-20 h-14 flex items-center p-4">
               <FontAwesomeIcon className="sm:h-8 sm:w-8 w-6 h-6" icon={faFilePdf} style={{ color: "#fa0f00" }} />
                 <div className="ml-4">
