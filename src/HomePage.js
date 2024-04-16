@@ -3,7 +3,7 @@ import "./HomePage.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
 import { injectStyle } from "react-toastify/dist/inject-style";
-import { useNavigate} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Logo from "./assets/bg2.png";
 import gifImage from "./assets/main-logo-unscreen.gif";
 import insta from "./assets/instagram.png";
@@ -163,6 +163,26 @@ function HomePage() {
     }
   ];
 
+  const oralQues = [
+    {
+      heading: "Capt. Nitin Nayyar"
+    },
+    {
+      heading: "Capt. GP Shenoy"
+    },
+    {
+      heading: "Capt. Ajoy Aggarwal"
+    },
+    {
+      heading: "Capt. Nitin Nayyar"
+    },
+    {
+      heading: "Capt. GP SHENOY"
+    },
+    {
+      heading: "Capt. Ajoy Aggarwal"
+    },
+  ]
   // State variables for news bulletin
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
   const [currentDetailsIndex, setCurrentDetailsIndex] = useState(0);
@@ -643,6 +663,51 @@ function HomePage() {
     {/* Add your content here */}
   </div>
 </div>
+{/* Add your content here */}
+  <div className="my-14 text-center">
+      <p className="text-darkest-blue font-montserrat bg-light-blue lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center tracking-wider">
+        Oral Questions
+      </p>
+    </div>
+    <div className="flex items-center justify-between mx-8 lg:mx-12 h-full ">
+    <FontAwesomeIcon
+      icon={faArrowLeft}
+      className="text-white text-base lg:text-2xl cursor-pointer"
+      onClick={prevNews}
+    />
+   <div className="lg:flex w-full justify-around lg:mr-0 mr-10">
+      {/* Display 3 news simultaneously */}
+      {Object.keys(oralQues).slice(currentNewsIndex, currentNewsIndex + (window.innerWidth >= 1024 ? 3 : 1)).map((key, index) => {
+        const ques = oralQues[key];
+        return (
+          <div key={index} className="w-full lg:w-1/3 text-center lg:mt-4 mx-5">
+            <Link to="/captainquespage">
+            <div className="rounded-lg shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden lg:h-48 h-54 flex flex-col">
+              <div className="bg-gray-300 lg:h-20 h-17 flex items-center p-4">
+                <FontAwesomeIcon className="sm:h-8 sm:w-8 h-6 w-6" icon={faFilePdf} style={{ color: "#fa0f00" }} />
+                <div className="ml-4">
+                  <p className="text-black font-montserrat font-semibold text-justify lg:text-base text-xs tracking-wide">
+                    {ques.heading}
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white lg:h-44 h-38 p-4 flex items-start ">
+                <p className="text-black lg:text-base text-xs font-montserrat items-center text-start leading-6 font-medium">
+                  Click here to checkout the question sets for Function 1, 2 and 3 conducted by {ques.heading}.
+                </p>
+              </div>
+            </div>
+            </Link>
+          </div>
+        );
+      })}
+    </div>
+    <FontAwesomeIcon
+      icon={faArrowRight}
+      className="text-white text-base lg:text-2xl cursor-pointer"
+      onClick={nextNews}
+    />
+  </div>
 <div className="my-14 text-center">
       <p className="text-darkest-blue font-montserrat bg-light-blue lg:p-8 p-6 font-semibold flex justify-center text-base lg:text-2xl text-center items-center tracking-wider">
         Test - Series

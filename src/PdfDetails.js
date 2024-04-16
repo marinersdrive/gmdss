@@ -186,6 +186,46 @@ function PdfDetails() {
         url: "https://drive.google.com/file/d/1DyH1OziCfmyC5btxjjZh45E9GlngK06V/view?usp=drive_link"
       },
       {
+        category: "PYQ Papers",
+        heading: "BSc. Question Papers",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+      },
+      {
+        category: "PYQ Papers",
+        heading: "MMD Question Papers",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+      },
+      {
+        category: "Syllabus",
+        heading: "Function 1",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+        url: "https://drive.google.com/file/d/17BQZX5HrgJ8-U9_8i1WbK6UjfJMa_JkP/view?usp=drive_link"
+      },
+      {
+        category: "Syllabus",
+        heading: "Function 2",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+        url: "https://drive.google.com/file/d/1g6TS09FF5p01ZPx1-70zDQiXaGEWlj2r/view?usp=drive_link"
+      },
+      {
+        category: "Syllabus",
+        heading: "Function 3",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+        url: "https://drive.google.com/file/d/1Iu3n8_ekwOscsUugOj8H7pvw7mMldP7H/view?usp=drive_link"
+      },
+      {
+        category: "Syllabus",
+        heading: "2MFG Guidelines",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+        url: "https://drive.google.com/file/d/17BQZX5HrgJ8-U9_8i1WbK6UjfJMa_JkP/view?usp=drive_link"
+      },
+      {
+        category: "Syllabus",
+        heading: "Question Paper Formats",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+        url: "https://drive.google.com/file/d/1fd2-bkZqLQ5yjTA5HjW6JfBvpSajn8yv/view?usp=drive_link"
+      },
+      {
         category: "Function 1",
         heading: "Manuals",
         body:
@@ -194,6 +234,12 @@ function PdfDetails() {
       {
         category: "Function 1",
         heading: "Reference Books",
+        body:
+          "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. ",
+      },
+      {
+        category: "Function 1",
+        heading: "Publications",
         body:
           "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. ",
       },
@@ -232,6 +278,21 @@ function PdfDetails() {
         heading: "Interco",
         body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
         url: "https://drive.google.com/file/d/1CK4yvoL-0Fci1n1a-MH0J_ZO7apVDZTP/view?usp=drive_link"
+      },
+      {
+        category: "Oral Questions",
+        heading: "Capt. Nitin Nayyar",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+      },
+      {
+        category: "Oral Questions",
+        heading: "Capt. GP Shenoy",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
+      },
+      {
+        category: "Oral Questions",
+        heading: "Capt. Ajoy Aggarwal",
+        body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
       },
   ];
 
@@ -371,7 +432,7 @@ function PdfDetails() {
             <div
               className="rounded-lg lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden lg:h-56 h-48 flex flex-col cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
               onClick={() => {
-                if (news.category !== 'BWKE' && news.category !== 'Cargo' && news.category !== 'Meteorology' && news.category !== 'Signals Visuals' && news.category !== "Signals Oral") {
+                if (news.category !== 'BWKE' && news.category !== 'Cargo' && news.category !== 'Meteorology' && news.category !== 'Signals Visuals' && news.category !== "Signals Oral" && news.category !== "Syllabus") {
                   handlePdfClick(news.heading);
                 }
               }}

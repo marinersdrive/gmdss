@@ -44,6 +44,16 @@ function PostSea() {
       body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. "
     },
     {
+      category: "Writtens Tab",
+      heading: "PYQ Papers",
+      body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. "
+    },
+    {
+      category: "Writtens Tab",
+      heading: "Syllabus",
+      body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. "
+    },
+    {
       category: "Orals Tab",
       heading: "Function 1",
       body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. "
@@ -61,6 +71,11 @@ function PostSea() {
     {
       category: "Orals Tab",
       heading: "Signals Oral",
+      body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. "
+    },
+    {
+      category: "Orals Tab",
+      heading: "Oral Questions",
       body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates. "
     },
   ];
@@ -83,6 +98,12 @@ function PostSea() {
   const handlePdfClick = (categoryName) => {
     localStorage.setItem("selectedCategory", categoryName);
     navigate("/pdfdetailspage"); // Navigate to the new page
+  };
+
+  // Function to handle the oral ques 
+  const handleOralQues = (categoryName) => {
+    localStorage.setItem("oral", categoryName);
+    navigate("/captainquespage"); // Navigate to the new page
   };
 
   const placeholders = ["Search"];
@@ -226,7 +247,14 @@ function PostSea() {
             <a href={news.url} target="_blank" rel="noopener noreferrer">
             <div
               className="rounded-lg lg:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-hidden lg:h-56 h-48 flex flex-col cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
-              onClick={() => handlePdfClick(news.heading)}
+              onClick={() => {
+                if (news.heading !== "Oral Questions") {
+                  handlePdfClick(news.heading);
+                }
+                else{
+                  handleOralQues(news.heading);
+                }
+              }}
             >
               <div className="bg-gray-300 lg:h-20 h-14 flex items-center p-4">
               <FontAwesomeIcon className="lg:h-8 lg:w-8 w-6 h-6" icon={faFilePdf} style={{ color: "#fa0f00" }} />

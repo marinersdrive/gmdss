@@ -29,14 +29,19 @@ function OnBoardTraining() {
       url: "https://drive.google.com/file/d/1AGitCsxH40yltF7-kM2TLiYFYS40_cAr/view?usp=drive_link",
     },
     {
-      category: "Projects",
+      category: "Projects & Activities",
       heading: "Projects 1",
       url: "https://drive.google.com/file/d/1-MjwDMn6p0Qoq4huZVa7Gqu1gPx8ljnL/view?usp=drive_link"
     },
     {
-      category: "Projects",
+      category: "Projects & Activities",
       heading: "Projects 2",
       url: "https://docs.google.com/document/d/1Dv_QWLHc6GHYNzATn0oYSh5nH78638nI/edit?usp=drive_link&ouid=116219638247513269846&rtpof=true&sd=true"
+    },
+    {
+      category: "Projects & Activities",
+      heading: "DLP Activity Workbook",
+      url: "https://drive.google.com/file/d/1t2NnxsRCLscm30ujqY7rkWqzvFrTQZMS/view?usp=drive_link"
     },
     {
       category: "Others",
@@ -50,7 +55,7 @@ function OnBoardTraining() {
     },
     {
       category: "Others",
-      heading: "Projects and Activities",
+      heading: "List of Projects and Activities",
       url: "https://drive.google.com/file/d/1HhctVFdZ0_MWI_hiYgVLXtM5vVqIznrB/view?usp=drive_link"
     },
     {
@@ -60,7 +65,7 @@ function OnBoardTraining() {
     }
   ];
 
-  const categories = ["Books", "Projects", "Others"];
+  const categories = ["Books", "Projects & Activities", "Others"];
 
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("Books");
