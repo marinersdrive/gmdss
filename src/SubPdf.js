@@ -1276,37 +1276,37 @@ function PdfDetails() {
       },
       {
         category: "MMD Question Papers",
-        heading: "Copy of Bridge Equipment",
+        heading: "Bridge Equipment",
         body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
         url: "  https://drive.google.com/file/d/1snTe2IuQIO-WJ-rmlaEEEOGKNL20ZosS/view?usp=drive_link"
       },
       {
         category: "MMD Question Papers",
-        heading: "Copy of Cargo Handling",
+        heading: "Cargo Handling",
         body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
         url: "https://drive.google.com/file/d/1wuDyHwF1t2sTot8yMnqsOCUZjVPFYAsQ/view?usp=drive_link"
       },
       {
         category: "MMD Question Papers",
-        heading: "Copy of Celestial Navigation",
+        heading: "Celestial Navigation",
         body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
         url: "https://drive.google.com/file/d/1tcogpJnnrUY_dzlhpMJ8seh1kAGB3jFr/view?usp=drive_link"
       },
       {
         category: "MMD Question Papers",
-        heading: "Copy of Meteorology",
+        heading: "Meteorology",
         body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
         url: "https://drive.google.com/file/d/1ktRHmKOWDmYoZQOJ-VWHXXFphIl3fhVd/view?usp=drive_link"
       },
       {
         category: "MMD Question Papers",
-        heading: "Copy of SSEP",
+        heading: "SSEP",
         body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
         url: "https://drive.google.com/file/d/1gJGf9Z7bimD6CbS-rsyjZKKTqUmjuYA0/view?usp=drive_link"
       },
       {
         category: "MMD Question Papers",
-        heading: "Copy of TCN",
+        heading: "TCN",
         body: "This document contains important information about the upcoming IMU-CET (Indian Maritime University Common Entrance Test) examination, including dates, timings, and instructions for candidates.",
         url: "https://drive.google.com/file/d/1oJWmzK40GmWDc78dpyFtbJA6-Jfcc3p0/view?usp=drive_link"
       },
