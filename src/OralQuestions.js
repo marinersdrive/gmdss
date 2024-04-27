@@ -52,7 +52,7 @@ function OralQuestions() {
 
 
   return (
-    <div className="lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 py-8 lg:px-0 px-6 pb-16 overflow-y-auto">
+    <div className="lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 pt-6 lg:px-0 px-6 pb-8 overflow-y-auto">
       <div className="flex flex-col justify-center items-center">
           <div className="mb-4">
             <img
@@ -61,12 +61,6 @@ function OralQuestions() {
               className="w-28 h-28 sm:w-40 sm:h-40"
             />
           </div>
-          <FontAwesomeIcon icon={faBackward} 
-            style={{"--fa-primary-color": "#143261", "--fa-secondary-color": "#143261",}}         
-            size="2xs"
-            className="text-blue-800 text-2xl lg:text-8xl cursor-pointer absolute top-1/2 lg:left-24 left-4 lg:ml-3"
-            onClick={handlePrevSet}
-            />
           <div className="text-center mb-6">
             <h2 className="text-xl lg:text-2xl font-semibold mt-0 text-gray-300 font-montserrat tracking-normal">{captName}</h2>
             {filteredData && filteredData.length > 0 && (<h2 className="text-xl lg:text-2xl font-semibold mt-0 text-gray-300 font-montserrat tracking-normal">(Set {filteredData[currentSetIndex].set})</h2>)}
@@ -79,7 +73,7 @@ function OralQuestions() {
                 seamless=""
                 width={700}
                 height={600}
-                className="block lg:hidden w-96 h-96"
+                className="block lg:hidden w-96 h-108"
                 sandbox="allow-scripts allow-same-origin"
               />
             </div>
@@ -97,12 +91,21 @@ function OralQuestions() {
               />
             </div>
           )}
+          <div className="flex mt-2">
+          <FontAwesomeIcon icon={faBackward} 
+            style={{"--fa-primary-color": "#143261", "--fa-secondary-color": "#143261",}}         
+            size="2xs"
+            className="text-gray-800 text-2xl lg:text-3xl cursor-pointer top-1/2 lg:left-24 left-4 lg:ml-3 mr-4"
+            onClick={handlePrevSet}
+            />
+          {filteredData && filteredData.length > 0 && (<h2 className="text-xl lg:text-2xl font-semibold text-gray-800 font-montserrat tracking-normal">{filteredData[currentSetIndex].set}</h2>)}
+
           <FontAwesomeIcon
           icon={faForward}
-          className="text-blue-800 text-2xl lg:text-8xl cursor-pointer absolute top-1/2 lg:right-24 right-4 lg:mr-3"
+          className="text-gray-800 text-2xl lg:text-3xl cursor-pointer top-1/2 lg:right-24 right-4 lg:mr-3 ml-4"
           onClick={handleNextSet}
         />
-        <Link to="/" className="text-white text-center ml-2 border-b-2 sm:text-base text-xs transition duration-300 ease-in-out transform hover:scale-105 relative">˂ Back ˃</Link>
+        </div>
 
         </div>
         
