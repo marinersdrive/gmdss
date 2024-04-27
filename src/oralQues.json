@@ -1,76 +1,19 @@
-[
-    {
-        "capt": "Capt. Nitin Nayyar",
-        "set1": {
-            "internal": "Capt. Harinder",
-            "external": "Capt. Nitin Nayyar",
-            "func1": {
-                "p1": "Pilot, trawler, mine clearance (screwed up the fog signal)"
-            },
-            "func2": {
-                "p1": "SF",
-                "p2": "LD",
-                "p3": "BS",
-                "p4": "What is Concentrate?",
-                "p5": "How to load steel coil?",
-                "p6": "Type of gas carrier?",
-                "p7": "Type of lashing used in container ships?",
-                "p8": "FML",
-                "p9": "TML",
-                "p10": "Which code to follow on bulk carrier (IMSBS) Gas carrier (Sigtto) grain (grain code) oil tanker (isgott)?",
-                "p11": "What is the latest amendment in isgott?",
-                "p12": "What is deck seal?",
-                "p13": "Type of deck seal?",
-                "p14": "What is timber code?",
-                "p15": "Type of lashing in timber",
-                "p16": "Diff between timber and normal loadline? 1/36 draft",
-                "p17": "Type of tank in gas carrier?",
-                "p18": "AOR",
-                "p19": "Which AOR cargo likely to shift?"
-            },
-            "func3": {
-                "p1": "Food water discharge criteria?",
-                "p2": "Dia after commintued(25mm)?",
-                "p3": "What is green passport?",
-                "p4": "What is the name of recycling ship convention?",
-                "p5": "Req of TPA in l/b?",
-                "p6": "What is a tender vessel?"
-            },
-            "func1_res": "FAIL",
-            "func2_res": "PASS",
-            "func3_res": "PASS"
-        },
-        "set2": {
-            "internal": "Capt. Harinder",
-            "external": "Capt. Nitin Nayyar",
-            "func3": {
-                "p1": "Machinery space discharge criteria ",
-                "p2": "Can you discharge in Special Area?",
-                "p3": "GM",
-                "p4": "Metacentre",
-                "p5": "Tender vessel",
-                "p6": "Where to load cargo in tender vsl? (on deck or below deck)",
-                "p7": "High expansion (why not on deck)",
-                "p8": "Low expansion",
-                "p9": "Co2 quantity for machinery spaces",
-                "p10": "Discharge time of CO2",
-                "p11": "Hong Kong convention",
-                "p12": "Language barrier in RMA ( answered International code of signals)",
-                "p13": "Which code to use? (Don't know)"
-            },
-            "func3_res": "PASS"
-        }
-    },
-    {
-        "capt": "Capt. GP Shenoy",
-        "set1":{
-            "internal": "Capt. GP Shenoy",
-            "external": "Capt. Anand",
-            "func1": {
-                
-            }
-        }
-
-    }
-    
-]
+{
+  "Capt. Ajoy Aggarwal": [
+    { "set": 1, "url": "https://drive.google.com/file/d/1mgRQHUnrZ_JKxj_EL0G4FD7Ch0PswCSi/preview" },
+    { "set": 2, "url": "https://drive.google.com/file/d/142v4vre4NIoY2GzBjF2QLPKiFbBNfL6b/preview" },
+    { "set": 3, "url": "https://drive.google.com/file/d/1Jfaw72NlLeveqBTAx8KA3wkEhVR4J546/preview" },
+    { "set": 4, "url": "https://drive.google.com/file/d/1OQkGj8KknKV3wfFapDXVrsdwvfRwrSa4/preview" }
+  ],
+  "Capt. GP Shenoy": [
+    { "set": 1, "url": "https://drive.google.com/file/d/15tJr3_hk15mKASpwGezk9wTYX9bGhweB/preview" },
+    { "set": 2, "url": "https://drive.google.com/file/d/1f-GzritaXTGb4F6sbBYEnhkHLOkbdBBA/preview" }
+  ],
+  "Capt. Nitin Nayyar": [
+    { "set": 1, "url": "https://drive.google.com/file/d/12wyYZ4FdSCJKnOAf6SyBp-mtAqudK8bN/preview" },
+    { "set": 2, "url": "https://drive.google.com/file/d/1lhd5PnZm2b3xxdYE98IfZUOTNIv5tXtz/preview" }
+  ],
+  "Capt. PC Meena": [
+    { "set": 1, "url": "https://drive.google.com/file/d/14lTgUKzE4nnQAwxSzH9-tckgRaIoZL9Q/preview" }
+  ]
+}

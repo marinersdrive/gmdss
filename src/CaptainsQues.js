@@ -31,7 +31,7 @@ function PdfDetails() {
   ];
 
   const handlePdfClick = (categoryName) => {
-    localStorage.setItem("selectedCategory2", categoryName);
+    localStorage.setItem("captName", categoryName);
     navigate("/oralquestions"); // Navigate to the new page
   };
   

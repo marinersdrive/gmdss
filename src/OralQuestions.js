@@ -1,106 +1,108 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import oralQues from './oralQues.json';
 import Logo from "./assets/bg2.png";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faBackward, faForward } from "@fortawesome/free-solid-svg-icons";
+import { Document, Page } from 'react-pdf';
 
 function OralQuestions() {
-  const selectedCategory = localStorage.getItem("oral");
-  const [currentSetIndex, setCurrentSetIndex] = useState(0);
+  const navigate = useNavigate();
+  const [captName, setCaptName] = useState(""); // State to store selected captain name
+  const [currentSetIndex, setCurrentSetIndex] = useState(0); // State to manage current set index
 
+  useEffect(() => {
+    window.onpopstate = function () {
+      navigate("/captainquespage");
+    };
+  });
+  
+  // Fetch and set the captain name from local storage on component mount
+  useEffect(() => {
+    const storedCaptName = localStorage.getItem("captName");
+    if (storedCaptName) {
+      setCaptName(storedCaptName);
+    }
+  }, []);
+
+  // Filter the data based on the selected captain name
+  const filteredData = oralQues[captName] || [];
+  console.log(filteredData)
   const handlePrevSet = () => {
-    setCurrentSetIndex((prevIndex) => Math.max(0, prevIndex - 1));
+    setCurrentSetIndex((prevIndex) => {
+      if (prevIndex === 0) {
+        // If on the first set, wrap around to the last set
+        return filteredData.length - 1;
+      } else {
+        return prevIndex - 1;
+      }
+    });
   };
 
   const handleNextSet = () => {
-    setCurrentSetIndex((prevIndex) => Math.min(oralQues.length - 1, prevIndex + 1));
+    setCurrentSetIndex((prevIndex) => {
+      if (prevIndex === filteredData.length - 1) {
+        // If on the last set, wrap around to the first set
+        return 0;
+      } else {
+        return prevIndex + 1;
+      }
+    });
   };
 
-  const currentSet = oralQues[currentSetIndex] || { capt: "", set1: {}, set2: {} };
 
   return (
-    <div className="lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 sm:py-6 lg:pb-3 pb-2 overflow-y-auto">
+    <div className="lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 py-10 overflow-y-auto">
       <div className="flex flex-col justify-center items-center">
-        <FontAwesomeIcon
-          icon={faArrowLeft}
-          className="text-white text-base lg:text-2xl cursor-pointer"
-          onClick={handlePrevSet}
-        />
-        <div className="flex flex-col justify-center bg-white px-6 py-6 rounded-lg max-w-3xl mx-auto md:mt-20 lg:mt-0 lg:mb-0 font-montserrat shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-y-auto">
-          <div className="flex items-center justify-center mb-4">
+      <FontAwesomeIcon icon={faBackward} 
+      size="2xs"
+      style={{"--fa-primary-color": "#dadde2", "--fa-secondary-color": "#dadde2"}}
+      className="btn text-white text-2xl lg:text-5xl cursor-pointer absolute top-1/2 lg:left-48 left-6 lg:mt-6 transform -translate-y-1/2"
+      onClick={handlePrevSet}
+      />
+        
+        <div className="flex flex-col justify-center items-center bg-white px-6 py-6 rounded-lg max-w-4xl mx-auto md:mt-20 lg:mt-0 lg:mb-0 font-montserrat shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-y-auto relative">
+          <div className="mb-4">
             <img
               src={Logo}
               alt="Logo"
               className="w-28 h-28 sm:w-40 sm:h-40"
             />
           </div>
-          <h2 className="text-2xl font-semibold text-center text-darkest-blue">{currentSet.capt}</h2>
-          {Object.entries(currentSet.set1).length > 0 && (
-            <div>
-              <h3 className="text-lg font-semibold text-darkest-blue">Set 1:</h3>
-              <p className="text-base mt-2 font-medium text-center text-darkest-blue">Internal: {currentSet.set1.internal || ""}</p>
-              <p className="text-base mt-2 font-medium text-center text-darkest-blue">External: {currentSet.set1.external || ""}</p>
-              {Object.entries(currentSet.set1).length > 0 && (
-                <div className="mt-4 tracking-wide">
-                  <h3 className="text-lg font-semibold text-darkest-blue">Function 1:</h3>
-                  <ul>
-                    {Object.values(currentSet.set1.func1 || {}).map((func, index) => (
-                      <li key={index}>{index + 1}. {func}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {Object.entries(currentSet.set1).length > 0 && (
-                <div className="mt-4 tracking-wide">
-                  <h3 className="text-lg font-semibold text-darkest-blue">Function 2:</h3>
-                  <ul>
-                    {Object.values(currentSet.set1.func2 || {}).map((func, index) => (
-                      <li key={index}>{index + 1}. {func}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {Object.entries(currentSet.set1).length > 0 && (
-                <div className="mt-4 tracking-wide">
-                  <h3 className="text-lg font-semibold text-darkest-blue">Function 3:</h3>
-                  <ul>
-                    {Object.values(currentSet.set1.func3 || {}).map((func, index) => (
-                      <li key={index}>{index + 1}. {func}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              <div className="mt-4 bg-blue-900 p-4 rounded-lg justify-center">
-                <p className="text-white font-bold text-center">Function 1: <span className="text-red font-bold tracking-wider">{currentSet.set1.func1_res || ""}</span></p>
-                <p className="text-white font-bold text-center">Function 2: <span className="text-green font-bold tracking-wider">{currentSet.set1.func2_res || ""}</span></p>
-                <p className="text-white font-bold text-center">Function 3: <span className="text-green font-bold tracking-wider">{currentSet.set1.func3_res || ""}</span></p>
-              </div>
+          <div className="text-center mb-6">
+            <h2 className="text-xl lg:text-2xl font-semibold mt-0 text-darkest-blue font-montserrat tracking-normal">{captName}</h2>
+            {filteredData && filteredData.length > 0 && (<h2 className="text-xl lg:text-2xl font-semibold mt-0 text-darkest-blue font-montserrat tracking-normal">(Set {filteredData[currentSetIndex].set})</h2>)}
+          </div>
+          {filteredData && filteredData.length > 0 && (
+            <div className="mb-4">
+              <iframe
+                title="PDF Viewer"
+                src={filteredData[currentSetIndex].url}
+                seamless=""
+                width={700}
+                height={600}
+                className="block lg:hidden w-full h-96"
+                sandbox="allow-scripts allow-same-origin"
+              />
             </div>
           )}
-          {Object.entries(currentSet.set2).length > 0 && (
-            <div>
-              <h3 className="text-lg font-semibold text-darkest-blue">Set 2:</h3>
-              <p className="text-base mt-2 font-medium text-center text-darkest-blue">Internal: {currentSet.set2.internal || ""}</p>
-              <p className="text-base mt-2 font-medium text-center text-darkest-blue">External: {currentSet.set2.external || ""}</p>
-              {Object.entries(currentSet.set2).length > 0 && (
-                <div className="mt-4 tracking-wide">
-                  <h3 className="text-lg font-semibold text-darkest-blue">Function 3:</h3>
-                  <ul>
-                    {Object.values(currentSet.set2.func3 || {}).map((func, index) => (
-                      <li key={index}>{index + 1}. {func}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              <div className="mt-4 bg-blue-900 p-4 rounded-lg justify-center">
-                <p className="text-white font-bold text-center">Function 3: <span className="text-green font-bold tracking-wider">{currentSet.set2.func3_res || ""}</span></p>
-              </div>
+          {filteredData && filteredData.length > 0 && (
+            <div className="mb-4">
+              <iframe
+                title="PDF Viewer"
+                src={filteredData[currentSetIndex].url}
+                seamless=""
+                width={700}
+                height={600}
+                className="hidden lg:block"
+                sandbox="allow-scripts allow-same-origin"
+              />
             </div>
           )}
         </div>
         <FontAwesomeIcon
-          icon={faArrowRight}
-          className="text-white text-base lg:text-2xl cursor-pointer"
+          icon={faForward}
+          className="text-white text-2xl lg:text-5xl cursor-pointer absolute top-1/2 lg:right-48 right-6 lg:mt-6 transform -translate-y-1/2"
           onClick={handleNextSet}
         />
       </div>
