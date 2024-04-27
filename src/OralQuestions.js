@@ -54,7 +54,7 @@ function OralQuestions() {
   return (
     <div className="lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 py-16 lg:px-0 px-6 overflow-y-auto">
       <div className="flex flex-col justify-center items-center">
-        <div className="flex flex-col justify-center items-center bg-white px-16 py-6 rounded-lg max-w-4xl mx-auto md:mt-20 lg:mt-0 lg:mb-0 font-montserrat shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-y-auto relative">
+        <div className="flex flex-col justify-center items-center bg-white lg:px-16 py-6 px-12 rounded-lg max-w-4xl mx-auto md:mt-20 lg:mt-0 lg:mb-0 font-montserrat shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] overflow-y-auto relative">
           <div className="mb-4">
             <img
               src={Logo}
@@ -65,7 +65,7 @@ function OralQuestions() {
           <FontAwesomeIcon icon={faBackward} 
             style={{"--fa-primary-color": "#143261", "--fa-secondary-color": "#143261",}}         
             size="2xs"
-            className="text-blue-900 text-2xl lg:text-4xl cursor-pointer absolute top-1/2 lg:left-0 left-6 lg:mt-24 lg:ml-3 border-blue"
+            className="text-blue-900 text-2xl lg:text-4xl cursor-pointer absolute top-1/2 lg:left-0 left-3 lg:mt-24 lg:ml-3"
             onClick={handlePrevSet}
             />
           <div className="text-center mb-6">
@@ -80,7 +80,7 @@ function OralQuestions() {
                 seamless=""
                 width={700}
                 height={600}
-                className="block lg:hidden w-72 h-96"
+                className="block lg:hidden w-64 h-96"
                 sandbox="allow-scripts allow-same-origin"
               />
             </div>
@@ -100,7 +100,7 @@ function OralQuestions() {
           )}
           <FontAwesomeIcon
           icon={faForward}
-          className="text-blue-900 text-2xl lg:text-4xl cursor-pointer absolute top-1/2 lg:right-0 right-6 lg:mt-24 lg:mr-3"
+          className="text-blue-900 text-2xl lg:text-4xl cursor-pointer absolute top-1/2 lg:right-0 right-3 lg:mt-24 lg:mr-3"
           onClick={handleNextSet}
         />
         </div>
