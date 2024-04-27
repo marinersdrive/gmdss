@@ -52,7 +52,7 @@ function OralQuestions() {
 
 
   return (
-    <div className="lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 py-10 overflow-y-auto">
+    <div className="lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 py-12 lg:px-0 px-6 overflow-y-auto">
       <div className="flex flex-col justify-center items-center">
       <FontAwesomeIcon icon={faBackward} 
       size="2xs"
@@ -81,7 +81,7 @@ function OralQuestions() {
                 seamless=""
                 width={700}
                 height={600}
-                className="block lg:hidden w-full h-96"
+                className="block lg:hidden w-72 h-96"
                 sandbox="allow-scripts allow-same-origin"
               />
             </div>
