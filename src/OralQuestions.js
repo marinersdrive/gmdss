@@ -52,7 +52,7 @@ function OralQuestions() {
 
 
   return (
-    <div className="lg:top-0 lg:left-0 lg:right-0 lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 pt-6 lg:px-0 px-6 pb-8 overflow-y-auto">
+    <div className="lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 pt-6 lg:px-0 px-6 pb-8 overflow-y-auto">
       <div className="flex flex-col justify-center items-center">
           <div className="mb-4">
             <img
@@ -95,14 +95,14 @@ function OralQuestions() {
           <FontAwesomeIcon icon={faBackward} 
             style={{"--fa-primary-color": "#143261", "--fa-secondary-color": "#143261",}}         
             size="2xs"
-            className="text-gray-800 text-2xl lg:text-3xl cursor-pointer top-1/2 lg:left-24 left-4 lg:ml-3 mr-4"
+            className="text-gray-800 text-2xl lg:text-3xl cursor-pointer lg:left-24 left-4 mr-4"
             onClick={handlePrevSet}
             />
           {filteredData && filteredData.length > 0 && (<h2 className="text-xl lg:text-2xl font-semibold text-gray-800 font-montserrat tracking-normal">{filteredData[currentSetIndex].set}</h2>)}
 
           <FontAwesomeIcon
           icon={faForward}
-          className="text-gray-800 text-2xl lg:text-3xl cursor-pointer top-1/2 lg:right-24 right-4 lg:mr-3 ml-4"
+          className="text-gray-800 text-2xl lg:text-3xl cursor-pointer lg:right-24 right-4 ml-4"
           onClick={handleNextSet}
         />
         </div>
