@@ -52,7 +52,7 @@ function OralQuestions() {
 
 
   return (
-    <div className="lg:bg-gradient-to-t from-darkest-blue to-black2 lg:z-50 lg:py-6 pt-6 lg:px-0 px-6 pb-8 overflow-y-auto">
+    <div className="lg:bg-gradient-to-t from-darkest-blue to-black2 lg:py-6 pt-6 lg:px-0 px-6 pb-8 overflow-y-auto">
       <div className="flex flex-col justify-center items-center">
           <div className="mb-4">
             <img
